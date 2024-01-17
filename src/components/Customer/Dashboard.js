@@ -25,7 +25,7 @@ function Dashboard(props) {
                     'totalWishList': data.totalWishList,
                     'totalAddress': data.totalAddress,
                 });
-                // console.log(CountList);
+                
             });
     }
 
