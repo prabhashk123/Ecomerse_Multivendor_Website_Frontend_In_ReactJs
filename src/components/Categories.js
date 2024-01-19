@@ -1,9 +1,10 @@
-import logo from '../logo.svg';
+// import logo from '../logo.svg';
 import { Link } from "react-router-dom";
 import { useState, useEffect } from 'react';
 
 function Categories() {
     const baseUrl = 'http://127.0.0.1:8000/api';
+    const baseImgUrl='http://127.0.0.1:8000'
     const [categories, setCategories] = useState([]);
     const [totalResult, settotalResult] = useState(0);
     useEffect(() => {
@@ -16,6 +17,7 @@ function Categories() {
             .then((data) => {
                 setCategories(data);
                 // settotalResult(data);
+                // console.log(data);
             });
     };
     // style for image
@@ -41,11 +43,11 @@ function Categories() {
             <h4 className='mb-4'><strong>Shop By Category</strong></h4>
             <div className="row mb-4">
                 {
-                    categories.map((category) =>
+                    categories.map((category,index) =>
                         <div className="col-12 col-md-3 mb-4">
                             <div className="card">
                                 <Link to={`/category/${category.title}/${category.id}`}>
-                                    <img src={category.cat_img} style={imgStyle} className="card-img-top" alt={category.title} />
+                                    <img src={`${baseImgUrl}/${category.cat_img}`} style={imgStyle} className="card-img-top" alt={category.title} />
                                 </Link>
                                 <div className="card-body">
                                     <h4 className="card-title"><Link to={`/category/${category.title}/${category.id}`}>{category.title}</Link></h4>

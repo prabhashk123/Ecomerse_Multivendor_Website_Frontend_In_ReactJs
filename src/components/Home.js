@@ -6,8 +6,10 @@ import SingleProduct from './SingleProduct';
 import Testimonial from './Testimonial';
 import { Carousel } from 'react-bootstrap';
 import SingleSeller from './Seller/SingleSeller';
+// for category slider
+import SquareImageSlider from './Admin/SinglieCategorySlider';
 
-function Home() {
+function Home(props) {
     const baseUrl = 'http://127.0.0.1:8000/api';
     const [products, setProducts] = useState([]);
     const [ReviewsList, setReviewsList] = useState([]);
@@ -66,14 +68,19 @@ function Home() {
                 // console.log(data);
             });
     }
-     // style for image
-     const imgStyle={
-        width:'100%',
-        height:'10vw',
-        objectFit:'contain'
+    // style for image
+    const imgStyle = {
+        width: '100%',
+        height: '10vw',
+        objectFit: 'contain'
     };
     return (
         <>
+            {/* For category added in slider */}
+            <div className='cat-img' id='cat-img'>
+                <SquareImageSlider alt='Prabhash' />
+            </div>
+            {/* end category slider */}
             <main className="mt-4">
                 <div className="container">
                     {/* Latest Product */}
@@ -98,9 +105,9 @@ function Home() {
                         {
                             PopularCategoryList.map((category) => <div className="col-12 col-md-3 mb-4">
                                 <div className="card">
-                                <Link to={`/category/${category.title}/${category.id}`}>
-                                    <img src={category.cat_img} style={imgStyle} className="card-img-top" alt={category.title} />
-                                </Link>
+                                    <Link to={`/category/${category.title}/${category.id}`}>
+                                        <img src={category.cat_img} style={imgStyle} className="card-img-top" alt={category.title} />
+                                    </Link>
                                     <div className="card-body">
                                         <h4 className="card-title"><h4 className="card-title"><Link to={`/category/${category.title}/${category.id}`}>{category.title}</Link></h4></h4>
                                     </div>

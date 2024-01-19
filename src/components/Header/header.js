@@ -32,10 +32,11 @@ function Header(props) {
   const Style = {
     position: 'static',
     display: 'flex',
-    width: '100px'
+    width: '90px'
 }
 
   return (
+    <>
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -190,6 +191,8 @@ function Header(props) {
         </div>
       </div>
     </nav>
+     {/* // end first navbar */}
+</>
   );
 }
 export default Header
