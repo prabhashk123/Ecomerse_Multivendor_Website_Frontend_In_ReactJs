@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import logo from '../logo.svg';
 import { useState, useEffect } from 'react';
 // Singleproduct
 import SingleProduct from './SingleProduct';

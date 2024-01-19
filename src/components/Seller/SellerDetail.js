@@ -53,14 +53,14 @@ function SellerDetail() {
         <section className="container mt-4">
             <div className='row'>
                 <div className='col-3'>
-                    <img src={VendorData.profile_img} className="img-thumbnail" alt={VendorData.user.username} />
+                    <img src={VendorData.profile_img} className="img-thumbnail" alt={VendorData.user?.username} />
                 </div>
                 <div className='col-9'>
                     {
-                        VendorData.user.first_name && <h3>{VendorData.user.first_name} {VendorData.user.last_name} </h3>
+                        VendorData.user?.first_name && <h3>{VendorData.user?.first_name} {VendorData.user.last_name} </h3>
                     }
                     {
-                        !VendorData.user.first_name && <h3>{VendorData.user.username}</h3>
+                        !VendorData.user?.first_name && <h3>{VendorData.user?.username}</h3>
                     }
 
                     <p>Total Products: {VendorData.total_products}</p>

@@ -54,7 +54,7 @@ function Login(props) {
                 console.log(error);
             });
     };
-console.log(localStorage.getItem('customer_login'))
+    
     const checkCustomer=localStorage.getItem('customer_login');
     if(checkCustomer){
         window.location.href='/customer/dashboard';

@@ -1,0 +1,102 @@
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import AdminSidebar from './AdminSidebar';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+
+function AddCategory() {
+    const baseUrl = 'http://127.0.0.1:8000/api';
+    const [ErrorMsg, setErrorMsg] = useState('');
+    const [SuccessMsg, setSuccessMsg] = useState('');
+    const [CategoryData, setCategoryData] = useState({
+        'title': '',
+        'detail': '',
+        'cat_img': '',
+    });
+
+    const inputHandler = (event) => {
+        setCategoryData({
+            ...CategoryData,
+            [event.target.name]: event.target.value
+        });
+    };
+// For Upload category image
+    const fileHandler = (event) => {
+        setCategoryData({
+            ...CategoryData,
+            [event.target.name]: event.target.files[0]
+        });
+    };
+
+    useEffect(() => {
+        setCategoryData({
+            ...CategoryData,
+        });
+    }, []);
+
+    const submitHandler = () => {
+        // send data to server
+        const formData = new FormData();
+        formData.append('title', CategoryData.title);
+        formData.append('detail', CategoryData.detail);
+        formData.append('cat_img', CategoryData.cat_img);
+        // submit data form
+        axios.post(baseUrl + '/categories/', formData, {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        })
+            .then(function (response) {
+                if (response.status == 201) {
+                    setCategoryData({
+                        'title': '',
+                        'detail': '',
+                        'cat_img': '',
+                    });
+                    setErrorMsg('');
+                    setSuccessMsg(response.statusText);
+                } else {
+                    setSuccessMsg('');
+                    setErrorMsg(response.statusText);
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    };
+
+    return (
+        <>
+            <section>
+                <div className='row ms-5 mt-3'>
+                    <div className='col-md-4 col-12 mb-2'>
+                        <AdminSidebar />
+                    </div>
+                    <div className='container bg-secondary mt-2 mb-4 w-50'>
+                        <h3 className="mb-3 text-light">Add Category</h3>
+                        {SuccessMsg && <p className='text-dark'>{SuccessMsg}</p>}
+                        {ErrorMsg && <p className='text-danger'>{ErrorMsg} </p>}
+                        <Form className='text-light w-61'>
+                            <Form.Group className="mb-3" controlId="formBasicEmail">
+                                <Form.Label htmlForr='Title'>Title</Form.Label>
+                                <Form.Control name='title' onChange={inputHandler} value={CategoryData.title} type="text" id='Title' />
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                                <Form.Label htmlFor='Detail'>Detail</Form.Label>
+                                <Form.Control name='detail' onChange={inputHandler} value={CategoryData.detail} as="textarea" id='detail' rows={3} />
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="formBasicPassword">
+                                <Form.Label htmlFor='productcategoryimg'>Category Images</Form.Label>
+                                <Form.Control name='cat_img' onChange={fileHandler} type="file" id='productcategoryimg' />
+                            </Form.Group>
+                            <Button className='mb-2 item-center' variant="primary" onClick={submitHandler} type="button">
+                                Submit
+                            </Button>
+                        </Form>
+                    </div>
+                </div>
+            </section>
+        </>
+    );
+}
+export default AddCategory;

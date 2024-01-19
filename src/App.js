@@ -40,7 +40,20 @@ import AddressList from './components/Customer/AddressList';
 import AddAddress from './components/Customer/AddAddress';
 import AddReview from './components/Customer/AddReview';
 import UpdateAddress from './components/Customer/UpdateAddress';
-// Seller/Vendor pannel
+import AllCustomer from './components/Admin/AllCustomer';
+// Admin Pannel
+import AdminDashboard from './components/Admin/AdminDashboard';
+import AboutUs from './components/Admin/AboutUs';
+import AdminLogin from './components/Admin/AdminLogin';
+import AdminLogout from './components/Admin/AdminLogout';
+import AdminCategory from './components/Admin/AdminCategory';
+import AddCategory from './components/Admin/AddCategory';
+import UpdateCategory from './components/Admin/UpdateCategory';
+import AllVendorProducts from './components/Admin/AllVendorProducts';
+import AllCustomersOrders from './components/Admin/AllCustomersOrders';
+import AllVendors from './components/Admin/AllVendors';
+import AllReports from './components/Admin/AllReports';
+// Seller/Vendor Pannel
 import AllSellers from './components/AllSellers';
 import SellerDetail from './components/Seller/SellerDetail';
 import SellerRegister from './components/Seller/SellerRegister';
@@ -59,7 +72,7 @@ import MonthlyReports from './components/Seller/MonthlyReport';
 import YearlyReports from './components/Seller/YearlyReport';
 import VendorProfile from './components/Seller/VendorProfile';
 import VendorChangePassword from './components/Seller/VendorChangePassword';
-// context api without data pass props
+// Context Api without data pass props
 import { CartContext, CurrencyContext } from './components/Context';
 import { useState } from 'react';
 const checkCart = localStorage.getItem('cartData');
@@ -74,7 +87,19 @@ function App() {
       <CartContext.Provider value={{ cartData, setCartData }}>
         <Header />
         <Routes>
-          {/* Admin panel */}
+          {/* Admin Panel */}
+          <Route path='/admin/dashboard' element={<AdminDashboard />} />
+          <Route path='/owner/about' element={<AboutUs />} />
+          <Route path='/admin/login' element={<AdminLogin />} />
+          <Route path='/admin/logout' element={<AdminLogout />} />
+          <Route path='/admin/category' element={<AdminCategory />} />
+          <Route path='/admin/addcategory' element={<AddCategory />} />
+          <Route path='/admin/update-category/:category_id' element={<UpdateCategory />} />
+          <Route path='admin/allvendorproducts' element={<AllVendorProducts />} />
+          <Route path='/admin/allcustomersorders' element={<AllCustomersOrders />} />
+          <Route path='/admin/allcustomers' element={<AllCustomer />} />
+          <Route path='/admin/allvendors' element={<AllVendors />} />
+          <Route path='/admin/allreports' element={<AllReports />} />
           <Route path='/' element={<Home />} />
           <Route path='/products' element={<AllProducts />} />
           <Route path='/categories' element={<Categories />} />

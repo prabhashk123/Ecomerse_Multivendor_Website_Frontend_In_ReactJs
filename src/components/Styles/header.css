@@ -1,0 +1,18 @@
+
+  @media only screen and (max-width: 1000px) {
+    .navbar {
+        display: flex;
+        justify-content: center;
+
+    }
+
+    .container {
+        display: flex;
+        overflow: none;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+    }
+
+}
