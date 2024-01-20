@@ -49,7 +49,6 @@ function ProductDetail() {
             });
         }
     }
-    // Fuction for Api Fatch
     function fetchdata(baseUrl) {
         fetch(baseUrl)
             .then((response) => response.json())
@@ -110,7 +109,7 @@ function ProductDetail() {
     }
     const cartRemoveButtonHandler = () => {
         var previousCart = localStorage.getItem('cartData');
-        var cartJson = JSON.parse(previousCart);
+        let cartJson = JSON.parse(previousCart) || []; // Default to empty array
         cartJson.map((cart, index) => {
             if (cart != null && cart.product.id == productData.id) {
                 // delete cartJson[index]
@@ -197,7 +196,7 @@ function ProductDetail() {
                         CurrencyData == 'usd' && <h5 className="card-title">Price : $ {productData.usd_price}</h5>
                     }
                     {
-                        productData.vendor && <p><strong>Seller : </strong><Link to={`/seller/${productData.vendor.user.username}/${productData.vendor.id}`} className='text-decoration-none text-dark'>{productData.vendor.user.first_name} {productData.vendor.user.last_name}</Link></p>
+                        productData.vendor && <p><strong>Seller : </strong><Link to={`/seller/${productData.vendor.user?.username}/${productData.vendor.id}`} className='text-decoration-none text-dark'>{productData.vendor.user?.first_name} {productData.vendor.user?.last_name}</Link></p>
                     }
                     <p className='mt-3'>
                         <Link title='Demo' to={productData.demo_url} target='_blank' className='btn btn-dark'><i className="fa-solid fa-circle-play"></i> Demo
