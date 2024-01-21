@@ -26,12 +26,12 @@ function Oders() {
 
     return (
         <>
-            <div className='container mt-4'>
+            <div className='container mt-5'>
                 <div className='row'>
-                    <div className='col-md-3 col-12 mb-2'>
+                    <div className='col-md-3 col-12 mb-2 mt-3'>
                         <Sidebar />
                     </div>
-                    <div className='col-md-9 col-12 mb-3'>
+                    <div className='col-md-9 col-12 mb-3 mt-3'>
                         <div className='row'>
                             <div className='table-responsive'>
                                 <table className='table table-bordered'>

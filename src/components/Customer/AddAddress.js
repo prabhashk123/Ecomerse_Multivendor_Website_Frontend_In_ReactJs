@@ -50,11 +50,11 @@ function AddAddress() {
     return (
         <>
             <section>
-                <div className='row ms-5 mt-3'>
-                    <div className='col-md-4 col-12 mb-2'>
+                <div className='row ms-5 mt-5'>
+                    <div className='col-md-3 col-12 mb-2 mt-3'>
                         <Sidebar />
                     </div>
-                    <div className='container bg-secondary mt-2 mb-4 w-50'>
+                    <div className='container bg-secondary mt-3 mb-5 w-50'>
                         <h3 className="mb-3 text-light">Add Address</h3>
                         {ErrorMsg && <p className='alert alert-danger'>{ErrorMsg}</p>}
                         {SuccessMsg && <p className='alert alert-success'>{SuccessMsg}</p>}

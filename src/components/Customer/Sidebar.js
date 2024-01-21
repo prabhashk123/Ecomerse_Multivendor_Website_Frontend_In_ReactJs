@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 function Sidebar() {
     return (
-        
         <ListGroup as="ul">
             <Link to='/customer/dashboard'><ListGroup.Item as="li" active>Dashboard</ListGroup.Item></Link>
             <Link to='/customer/orders'><ListGroup.Item as="li">Orders</ListGroup.Item></Link>

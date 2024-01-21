@@ -26,7 +26,7 @@ function SquareImageSlider() {
             {
                 catimg.map((image, index) =>
                     <Carousel.Item key={index}>
-                        <img className="d-block w-100 h-auto" // This class ensures responsiveness while maintaining aspect ratio
+                        <img className="d-block h-50 w-100 h-auto" // This class ensures responsiveness while maintaining aspect ratio
                             src={`${baseImgUrl}/${image.cat_img}`}
                             alt={`Slide ${index + 1}`}
                         />

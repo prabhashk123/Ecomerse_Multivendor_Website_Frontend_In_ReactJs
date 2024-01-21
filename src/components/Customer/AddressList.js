@@ -47,12 +47,12 @@ function AddressList() {
 
     return (
         <>
-            <div className='container mt-4'>
+            <div className='container mt-5'>
                 <div className='row'>
-                    <div className='col-md-3 col-12 mb-2'>
+                    <div className='col-md-3 col-12 mb-2 mt-3'>
                         <Sidebar />
                     </div>
-                    <div className='col-md-9 col-12 mb-2'>
+                    <div className='col-md-9 col-12 mt-3'>
                         <div className='row'>
                             <div className='col-12'>
                                 <Link to='/customer/add_address' className='btn btn-outline-success mb-4 float-end'>
