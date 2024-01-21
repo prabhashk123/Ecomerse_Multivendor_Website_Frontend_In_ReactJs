@@ -38,12 +38,32 @@ function SingleProduct(props) {
         var cartJson = JSON.parse(previousCart);
         if (cartJson != null) {
             cartJson.map((cart) => {
-                if (cart != null && cart.product.id == product_id) {
+                if (cart != null && cart.product.id === product_id) {
                     setcartButtonClickStatus(true);
                 }
             });
         }
     }
+    //  function checkProductInCart(product_id) {
+    //     try {
+    //       var previousCart = localStorage.getItem('cartData');
+    //       var cartJson = JSON.parse(previousCart);
+      
+    //       if (Array.isArray(cartJson)) {
+    //         cartJson.some((cart) => {
+    //           if (cart && cart.product && cart.product.id === product_id) {
+    //             setcartButtonClickStatus(true);
+    //             return true; // Break out of the loop early
+    //           }
+    //         });
+    //       } else {
+    //         console.warn("cartJson is not an array. Check localStorage data structure.");
+    //       }
+    //     } catch (error) {
+    //       console.error("Error parsing JSON from localStorage:", error);
+    //     }
+    //   }
+    // Fuction for Api Fatch
     // for cart fuctionality two way once data is session and cookeies thane send to database
     const cartAddButtonHandler = () => {
         // for mutiple product
