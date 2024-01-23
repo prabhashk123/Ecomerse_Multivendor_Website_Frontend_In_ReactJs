@@ -15,7 +15,7 @@ function SingleSeller(props) {
     };
     return (
         <>
-            <div className="col-12 col-md-3 mb-4">
+            <div className="col-12 col-md-3 mt-5">
                 <div className="card">
                     <Link to={`/seller/${props.seller.user.username}/${props.seller.id}`}>
                         <img src={props.seller.profile_img} className="card-img-top" style={imgStyle} alt={props.seller.user.username} />

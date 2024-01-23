@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 function Reports() {
     return (
         <>
-            <div className='container mt-3'>
+            <div className='container mt-5'>
                 <div className='row'>
-                    <div className='col-md-3 col-12 mb-2'>
+                    <div className='col-md-3 col-12 mt-3'>
                         <SellerSidebar />
                     </div>
-                    <div className='col-md-9 col-12 mb-2'>
+                    <div className='col-md-9 col-12 mt-3'>
                         <div className='row'>
                             <div className='col-md-3 mb-2'>
                                 <div className='card'>

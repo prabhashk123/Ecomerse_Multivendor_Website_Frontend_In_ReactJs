@@ -50,7 +50,7 @@ function SellerDetail() {
     }
     console.log(VendorData);
     return (
-        <section className="container mt-4">
+        <section className="container mt-5">
             <div className='row'>
                 <div className='col-3'>
                     <img src={VendorData.profile_img} className="img-thumbnail" alt={VendorData.user?.username} />

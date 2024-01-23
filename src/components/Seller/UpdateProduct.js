@@ -162,11 +162,11 @@ function UpdateProduct() {
     return (
         <>
             <section>
-                <div className='row ms-5 mt-3'>
-                    <div className='col-md-4 col-12 mb-2'>
+                <div className='row ms-5 mt-5'>
+                    <div className='col-md-4 col-12 mb-2 mt-3'>
                         <SellerSidebar />
                     </div>
-                    <div className='container bg-secondary mt-2 mb-4 w-50'>
+                    <div className='container bg-secondary mb-4 mt-3 w-50'>
                         <h3 className="mb-3 text-light">Update Product</h3>
                         {SuccessMsg && <p className='text-dark'>{SuccessMsg}</p>}
                         {ErrorMsg && <p className='text-danger'>{ErrorMsg} </p>}
