@@ -41,12 +41,12 @@ function AllVendors() {
 
     return (
         <>
-            <div className='container mt-3'>
+            <div className='container mt-5'>
                 <div className='row'>
-                    <div className='col-md-3 col-12 mb-2'>
+                    <div className='col-md-3 col-12 mb-2 mt-3'>
                         <AdminSidebar />
                     </div>
-                    <div className='col-md-9 col-12 mb-2'>
+                    <div className='col-md-9 col-12 mb-2 mt-3'>
                         <div className='table-responsive'>
                             <table className='table table-bordered'>
                                 <thead>
