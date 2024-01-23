@@ -38,10 +38,11 @@ function Categories() {
     // };
     return (
 
-        <section className="container mt-3">
+        <section className="container">
             {/* All catogries */}
-            <h4 className='mb-4'><strong>Shop By Category</strong></h4>
-            <div className="row mb-4">
+            <br/>
+            <h4 className='mb-3 mt-5'><strong>Shop By Category(All)</strong></h4>
+            <div className="row mb-2">
                 {
                     categories.map((category,index) =>
                         <div className="col-12 col-md-3 mb-4">

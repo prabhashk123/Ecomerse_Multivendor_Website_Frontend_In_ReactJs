@@ -5,9 +5,9 @@ function OrderFaliure() {
     return (
 
         <>
-            <div className='container mt-4'>
-                <div className='row'>
-                    <div className='col-md-8 offset-2'>
+            <div className='container mt-5'>
+                <div className='row mb-4 mt-3'>
+                    <div className='col-md-8 offset-2 mt-3'>
                         <div className='card'>
                             <div className='card-body text-center'>
                                 <p><i className='fa fa-times-circle text-danger fa-3x'></i></p>

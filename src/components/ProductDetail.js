@@ -163,10 +163,11 @@ function ProductDetail() {
     }
 
     return (
-        <section className="container mt-4">
+        <section className="container">
+            <br/>
             {/* Carosel for 1 box */}
-            <div className="row">
-                <div className='col mb-4'>
+            <div className="row mt-5">
+                <div className='col mb-4 mt-3'>
                     <Carousel className='carousel-dark' data-bs-theme="light">
                         {
                             productImgs.map((img, index) => {

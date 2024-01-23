@@ -174,9 +174,9 @@ function ConfirmOrder() {
     }
 
     return (
-        <div className="container">
-            <div className="row mt-4">
-                <div className="col-6 offset-3">
+        <div className="container mt-5">
+            <div className="row mt-3">
+                <div className="col-6 offset-3 mt-3">
                     <div className="card text-center text-success py-3">
                         <h3><i className="fa fa-check-circle text-success"></i> Your order has been confirmed!</h3>
                         <h5>Order Id: {orderId}</h5>

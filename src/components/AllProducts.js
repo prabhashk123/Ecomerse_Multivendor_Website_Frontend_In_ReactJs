@@ -74,9 +74,10 @@ function AllProducts() {
     //     .then(response => response.json())
     //     .then(json => console.log(json))
     return (
-        <section className='container mt-4'>
-            <h3 className="mb-4">All Products</h3>
-            <div className="row mb-4">
+        <section className='container'>
+            <br/>
+            <h3 className="mb-2 mt-5">All Products</h3>
+            <div className="row mt-2">
                 {/* Product box */}
                 {/* map basicalliy iterate the data */}
                 {/* Send single object */}
@@ -108,6 +109,7 @@ function AllProducts() {
             </nav>
             {/* Pagination end */}
         </section>
+   
 
     );
 }

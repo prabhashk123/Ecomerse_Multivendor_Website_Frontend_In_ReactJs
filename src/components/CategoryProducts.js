@@ -43,8 +43,9 @@ function CategoryProducts() {
 
     };
     return (
-        <section className='container mt-4'>
-            <h3 className="mb-4">All Products</h3>
+        <section className='container'>
+            <br/>
+            <h3 className="mb-3 mt-5">All Products</h3>
             <div className="row mb-4">
                 {
                     Products.map((product, index) => <SingleProduct key={index} product={product} />)

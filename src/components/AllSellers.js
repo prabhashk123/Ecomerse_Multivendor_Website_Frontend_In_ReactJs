@@ -31,9 +31,10 @@ function AllSellers() {
     // };
 
     return (
-        <section className='container mt-4'>
-            <h3 className="mb-4">All Sellers</h3>
-            <div className="row mb-4">
+        <section className='container'>
+            <br/>
+            <h3 className="mt-5">All Sellers</h3>
+            <div className="row">
                 {
                     SellerList.map((seller) => <SingleSeller seller={seller} />)
                 }
