@@ -131,15 +131,15 @@ function Header(props) {
               {
                 checkVendor &&
                 <>
-                  <NavDropdown.Item eventKey="4.1"><Link to='/seller/dashboard'>Dashboard</Link></NavDropdown.Item>
-                  <NavDropdown.Item eventKey="4.4"><Link to='/seller/logout'>LogOut</Link></NavDropdown.Item>
+                  <NavDropdown.Item eventKey="4.1"><Link className='text-decoration-none' to='/seller/dashboard'>Dashboard</Link></NavDropdown.Item>
+                  <NavDropdown.Item eventKey="4.4"><Link className='text-decoration-none' to='/seller/logout'>LogOut</Link></NavDropdown.Item>
                 </>
               }
               {
                 !checkVendor &&
                 <>
-                  <NavDropdown.Item eventKey="4.2"><Link to='/seller/register'>Register</Link></NavDropdown.Item>
-                  <NavDropdown.Item eventKey="4.3"><Link to='/seller/login'>Login</Link></NavDropdown.Item>
+                  <NavDropdown.Item eventKey="4.2"><Link className='text-decoration-none' to='/seller/register'>Register</Link></NavDropdown.Item>
+                  <NavDropdown.Item eventKey="4.3"><Link className='text-decoration-none' to='/seller/login'>Login</Link></NavDropdown.Item>
                   <NavDropdown.Divider />
                 </>
               }
@@ -148,15 +148,15 @@ function Header(props) {
             <NavDropdown title="My Account" id="nav-dropdown">
               {userContext != 'true' &&
                 <>
-                  <NavDropdown.Item eventKey="4.2"><Link to='/customer/register'>Register</Link></NavDropdown.Item>
-                  <NavDropdown.Item eventKey="4.3"><Link to='/customer/login'>Login</Link></NavDropdown.Item>
+                  <NavDropdown.Item eventKey="4.2"><Link className='text-decoration-none' to='/customer/register'>Register</Link></NavDropdown.Item>
+                  <NavDropdown.Item eventKey="4.3"><Link className='text-decoration-none' to='/customer/login'>Login</Link></NavDropdown.Item>
                   <NavDropdown.Divider />
                 </>
               }
               {userContext == 'true' &&
                 <>
-                  <NavDropdown.Item eventKey="4.1"><Link to='/customer/dashboard'>Dashboard</Link></NavDropdown.Item>
-                  <NavDropdown.Item eventKey="4.4"><Link to='/customer/logout'>LogOut</Link></NavDropdown.Item>
+                  <NavDropdown.Item eventKey="4.1"><Link className='text-decoration-none' to='/customer/dashboard'>Dashboard</Link></NavDropdown.Item>
+                  <NavDropdown.Item eventKey="4.4"><Link className='text-decoration-none' to='/customer/logout'>LogOut</Link></NavDropdown.Item>
                 </>
               }
             </NavDropdown>
@@ -165,15 +165,15 @@ function Header(props) {
               {
                 checkAdmin &&
                 <>
-                  <NavDropdown.Item eventKey="4.1"><Link to='/admin/dashboard'>Dashboard</Link></NavDropdown.Item>
-                  <NavDropdown.Item eventKey="4.3"><Link to='/owner/about'>About Us</Link></NavDropdown.Item>
-                  <NavDropdown.Item eventKey="4.4"><Link to='/admin/logout'>LogOut</Link></NavDropdown.Item>
+                  <NavDropdown.Item eventKey="4.1"><Link className='text-decoration-none' to='/admin/dashboard'>Dashboard</Link></NavDropdown.Item>
+                  <NavDropdown.Item eventKey="4.3"><Link className='text-decoration-none' to='/owner/about'>About Us</Link></NavDropdown.Item>
+                  <NavDropdown.Item eventKey="4.4"><Link className='text-decoration-none' to='/admin/logout'>LogOut</Link></NavDropdown.Item>
                 </>
               }
               {
                 !checkAdmin &&
                 <>
-                  <NavDropdown.Item eventKey="4.3"><Link to='/admin/login'>Login</Link></NavDropdown.Item>
+                  <NavDropdown.Item eventKey="4.3"><Link className='text-decoration-none' to='/admin/login'>Login</Link></NavDropdown.Item>
                 </>
               }
               <NavDropdown.Divider />
