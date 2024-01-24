@@ -11,15 +11,16 @@ import SquareImageSlider from './Admin/SinglieCategorySlider';
 
 function Home(props) {
     const baseUrl = 'http://127.0.0.1:8000/api';
+    const baseImgUrl='http://127.0.0.1:8000';
     const [products, setProducts] = useState([]);
-    const [ReviewsList, setReviewsList] = useState([]);
+    // const [ReviewsList, setReviewsList] = useState([]);
     const [VendorList, setVendorList] = useState([]);
     const [PopularProductsList, setPopularProductsList] = useState([]);
     const [PopularCategoryList, setPopularCategoryList] = useState([])
     useEffect(() => {
         // but needs four products so set limits
         fetchdata(baseUrl + '/products/?fetch_limit=4');
-        fetchTestimonialData(baseUrl + '/productrating/');
+        // fetchTestimonialData(baseUrl + '/productrating/');
         fetchPopulerVendors(baseUrl + '/vendors/?fetch_limit=4');
         fetchPopulerProducts(baseUrl + '/products/?fetch_popular_products_limit=4');
         fetchPopulerCategories(baseUrl + '/categories/?fetch_popular_category_limit=4');
@@ -33,14 +34,14 @@ function Home(props) {
             });
     };
     // for rating
-    function fetchTestimonialData(baseUrl) {
-        fetch(baseUrl)
-            .then((response) => response.json())
-            .then((data) => {
-                setReviewsList(data);
-                // console.log(data);
-            });
-    }
+    // function fetchTestimonialData(baseUrl) {
+    //     fetch(baseUrl)
+    //         .then((response) => response.json())
+    //         .then((data) => {
+    //             setReviewsList(data);
+    //             // console.log(data);
+    //         });
+    // }
     // for populer vendors
     function fetchPopulerVendors(baseUrl) {
         fetch(baseUrl)
@@ -77,16 +78,17 @@ function Home(props) {
     return (
         <>
             {/* For category added in slider */}
-            <div className='cat-img' id='cat-img'>
+            <div className='cat-img mt-4' id='cat-img'>
+                {/* <br/> */}
                 <SquareImageSlider alt='Prabhash' />
             </div>
             {/* end category slider */}
-            <main className="mt-4">
+            <main className="mt-3">
                 <div className="container">
                     {/* Latest Product */}
-                    <h3 className="mb-4">Latest Products<Link className='float-end btn btn-dark' to="/products">View all Latest Products
+                    <h3 className="mb-2">Latest Products<Link className='float-end btn btn-dark' to="/products">View all Latest Products
                         <i class="fa-solid fa-arrow-right-long"></i></Link></h3>
-                    <div className="row mb-4">
+                    <div className="row">
                         {/* Product box */}
                         {
                             products.map((product, index) => <SingleProduct key={index} product={product} />)
@@ -97,19 +99,20 @@ function Home(props) {
                     {/* Latest Product end */}
 
                     {/* Popular catogries */}
-                    <h3 className="mb-4">Popular Categories<Link className='float-end btn btn-dark' to="/categories">View all Popular Cateogries
+                    <h3 className="mb-3">Popular Categories<Link className='float-end btn btn-dark' to="/categories">View all Popular Cateogries
                         <i class="fa-solid fa-arrow-right-long"></i>
                     </Link></h3>
-                    <div className="row mb-4">
+                    <div className="row mb-3">
                         {/* not define single category component then define div */}
                         {
                             PopularCategoryList.map((category) => <div className="col-12 col-md-3 mb-4">
                                 <div className="card">
                                     <Link to={`/category/${category.title}/${category.id}`}>
-                                        <img src={category.cat_img} style={imgStyle} className="card-img-top" alt={category.title} />
+                                        <img src={`${baseImgUrl}/${category.cat_img}`} style={imgStyle} className="card-img-top" alt={category.title} />
                                     </Link>
                                     <div className="card-body">
                                         <h4 className="card-title"><h4 className="card-title"><Link to={`/category/${category.title}/${category.id}`}>{category.title}</Link></h4></h4>
+                                        <h5 className="card-title text-muted">Desc: {category.detail}</h5>
                                     </div>
                                     <div className="card-footer">
                                         Product Downloads: {category.totala_downloads}
@@ -121,8 +124,8 @@ function Home(props) {
                     {/* Popular categories end */}
 
                     {/* Popular Product */}
-                    <h3 className="mb-4">Popular Products<Link className='float-end btn btn-dark' to="/products">View all Popular Products<i class="fa-solid fa-arrow-right-long"></i></Link></h3>
-                    <div className="row mb-4">
+                    <h3 className="mb-3">Popular Products<Link className='float-end btn btn-dark' to="/products">View all Popular Products<i class="fa-solid fa-arrow-right-long"></i></Link></h3>
+                    <div className="row mb-3">
                         {
                             PopularProductsList.map((product, index) => <SingleProduct key={index} product={product} />)
                         }
@@ -130,9 +133,9 @@ function Home(props) {
                     {/* Popular Product end */}
 
                     {/* Popular Sellers */}
-                    <h3 className="mb-4">Popular Sellers<Link className='float-end btn btn-dark' to="/sellers">View all Popular Sellers
+                    <h3 className="mb-3">Popular Sellers<Link className='float-end btn btn-dark' to="/sellers">View all Popular Sellers
                         <i class="fa-solid fa-arrow-right-long"></i></Link></h3>
-                    <div className="row mb-4">
+                    <div className="row mb-3">
                         {
                             VendorList.map((vendor) => <SingleSeller seller={vendor} />)
                         }
@@ -198,9 +201,11 @@ function Home(props) {
                     </div> */}
                     <div className="container carousel slide my-4 border bg-dark text-white p-5" data-bs-ride="true">
                         <div className='row'>
-                            {
+                            {/* {
                                 ReviewsList.map((item, index) => <Testimonial index={index} item={item} />)
-                            }
+                            } */}
+                            <Testimonial/>
+
                         </div>
                     </div>
                     {/* Carousel for Rating and Reviews end */}

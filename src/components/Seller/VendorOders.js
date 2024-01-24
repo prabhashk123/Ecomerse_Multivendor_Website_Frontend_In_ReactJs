@@ -52,10 +52,13 @@ function VendorOders() {
                             <table className='table table-bordered'>
                                 <thead>
                                     <tr>
+                                        <th>Sl No</th>
                                         <th>Orde_Id</th>
                                         <th>Product</th>
                                         <th>Price</th>
                                         {/* <th>Usd_Price</th> */}
+                                        <th>PayMode</th>
+                                        <th>Trans_id</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
@@ -63,11 +66,21 @@ function VendorOders() {
                                 <tbody>
                                     {
                                         OrderItems.map((item, index) => <><tr>
-                                            <td>{item.id}</td>
+                                            <td>{index+1}</td>
+                                            <td>{item.order.id}</td>
                                             <td><Link><img src={`${baseUrl}/${item.product.image}`} className="img-thumbnail" width='80' alt="..." /></Link>
                                                 <p><Link className='text-decoration-none'>{item.product.title}</Link></p>
                                             </td>
-                                            <td>Rs. {item.product.price}</td>
+                                            {
+                                                item.product.price==item.product.price && <td>Rs. {item.product.price}</td>
+                                            }
+                                            {
+                                                item.product.price==item.product.usd_price && <td>${item.product.usd_price}</td>
+                                            }
+                                            {/* <td>Rs. {item.product.price}</td> */}
+                                            {/* <td>${item.product.usd_price}</td> */}
+                                            <td>{item.order.payment_mode}</td>
+                                            <td>{item.order.trans_ref}</td>
                                             <td>
                                                 {
                                                     item.order.order_status && <span className='text-success'><i className='fa fa-check-circle'></i>Completed</span>

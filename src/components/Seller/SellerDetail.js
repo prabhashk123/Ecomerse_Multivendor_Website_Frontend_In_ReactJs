@@ -50,24 +50,28 @@ function SellerDetail() {
     }
     console.log(VendorData);
     return (
-        <section className="container">
-            <br/>
-            <div className='row mt-5'>
-                <div className='col-3 mt-3'>
-                    <img src={VendorData.profile_img} className="img-thumbnail" alt={VendorData.user?.username} />
+        <section className="container mt-4">
+            <br />
+            <div className='row mt-4'>
+                <div className='col-3'>
+                    <img src={VendorData.profile_img} className="img-thumbnail" alt={VendorData.user.username} />
                 </div>
                 <div className='col-9'>
                     {
-                        VendorData.user?.first_name && <h3>{VendorData.user?.first_name} {VendorData.user.last_name} </h3>
+                        VendorData.user.first_name && <h3>{VendorData.user.first_name} {VendorData.user.last_name} </h3>
                     }
                     {
-                        !VendorData.user?.first_name && <h3>{VendorData.user?.username}</h3>
+                        !VendorData.user.first_name && <h3>{VendorData.user.username}</h3>
                     }
-
-                    <p>Total Products: {VendorData.total_products}</p>
+                    <p>Mobile: +91-{VendorData.mobile} <br />
+                        Email: {VendorData.user.email}<br/>
+                        Address: {VendorData.address}<br/>
+                        Total Products: {VendorData.total_products}
+                    </p>
                 </div>
             </div>
             <div className='row'>
+                <span><h3 className='mt-3 text-dark'>Related Seller All Products.</h3></span>
                 {
                     ProductList.map((product, index) => <SingleProduct key={index} product={product} />)
                 }

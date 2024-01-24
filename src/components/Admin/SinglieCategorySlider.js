@@ -16,18 +16,14 @@ function SquareImageSlider() {
                 setcatimg(data);
             });
     };
-    // const imgStyle = {
-    //     width: '100%',
-    //     height: '10vw',
-    //     objectFit: 'contain'
-    // };
+
     return (
         <Carousel>
             {
                 catimg.map((image, index) =>
                     <Carousel.Item key={index}>
-                        <img className="d-block h-50 w-100 h-auto" // This class ensures responsiveness while maintaining aspect ratio
-                            src={`${baseImgUrl}/${image.cat_img}`}
+                        <img className="d-block"
+                            src={`${baseImgUrl}/${image.cat_img}`} width={1500} height={300}
                             alt={`Slide ${index + 1}`}
                         />
                     </Carousel.Item>

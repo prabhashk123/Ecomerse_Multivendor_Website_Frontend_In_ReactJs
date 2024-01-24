@@ -164,7 +164,6 @@ function SingleProduct(props) {
                         {
                             CurrencyData == 'usd' && <h5 className="card-title text-muted">Price : $ {props.product.usd_price}</h5>
                         }
-
                     </div>
 
                     <div className="card-footer">
