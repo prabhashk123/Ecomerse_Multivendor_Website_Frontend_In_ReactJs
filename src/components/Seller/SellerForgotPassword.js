@@ -1,35 +1,30 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Link } from 'react-router-dom';
-import { useState,useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
 
-function Resetpassword() {
+function SellerForgotPassword() {
     const baseUrl = 'http://127.0.0.1:8000/api';
-    const { customer_id } = useParams();
     const [successMsg, setsuccessMsg] = useState('');
     const [errorMsg, seterrorMsg] = useState('');
-    const [CustomerPasswordData, setCustomerPasswordData] = useState({
-        'password': '',
+    const [SellerData, setSellerData] = useState({
+       'email': ''
     });
-
     const HandleChange = (event) => {
         // ... merge data
-        setCustomerPasswordData({
-            ...CustomerPasswordData,
+        setSellerData({
+            ...SellerData,
             [event.target.name]: event.target.value
         });
-
     };
-    // submit request
+    // console.log(SellerData)
+    // submit
     const submitHandler = () => {
-        const CustomerFormData = new FormData();
-        CustomerFormData.append('password', CustomerPasswordData.password)
-        console.log(CustomerFormData);
+        const SellerFormData = new FormData();
+        SellerFormData.append('email', SellerData.email)
         // submit data form
         try {
-            axios.post(baseUrl + '/customer-reset-password/' + customer_id + '/', CustomerFormData)
+            axios.post(baseUrl + '/vendor-forgot-password/', SellerFormData)
                 .then((res) => {
                     console.log(res);
                     if (res.data.bool === true) {
@@ -45,12 +40,12 @@ function Resetpassword() {
             console.log(error);
         }
     }
-    const customerLoginStaus = localStorage.getItem('customerLoginStaus')
-    if (customerLoginStaus == 'true') {
-        window.location.href('/customer/dashboard')
+    const sellerLoginStaus = localStorage.getItem('sellerLoginStaus')
+    if (sellerLoginStaus == 'true') {
+        window.location.href('/seller/dashboard')
     }
     useEffect(() => {
-        document.title = 'Customer -Reset Password'
+        document.title = 'Seller -Forgot Password'
     })
 
     return (
@@ -58,20 +53,17 @@ function Resetpassword() {
             <section>
                 <div className='row ms-5 mt-5'>
                     <div className='container bg-secondary mt-3 mb-4 w-50'>
-                        <h3 className="mb-3 text-light">Reset Your Password</h3>
+                        <h3 className="mb-3 text-light">Forgot Password</h3>
                         <Form className='text-light w-61'>
                             <Form.Group className="mb-3" controlId="formBasicPassword">
-                                <Form.Label htmlFor='password'>New Password</Form.Label>
-                                <Form.Control type="password" value={CustomerPasswordData.password} id='pwd' placeholder='Enter new password' name='password' onChange={HandleChange} />
+                                <Form.Label htmlFor='email'>Email</Form.Label>
+                                <Form.Control type="email" value={SellerData.email} id='email' placeholder='Enter your registered email' name='email' onChange={HandleChange} />
                             </Form.Group>
                             {
                                 errorMsg && <p className='text-danger bg-light'>{errorMsg}<strong></strong></p>
                             }
                             <Button className='mb-3 item-center' onClick={submitHandler} variant="primary" type="button">
-                                Update
-                            </Button>
-                            <Button className='mb-3 item-center ms-2'>
-                                <Link className='text-decoration-none text-light' to='/customer/login'>Login</Link>
+                                Send
                             </Button>
                         </Form>
                     </div>
@@ -83,4 +75,4 @@ function Resetpassword() {
         </>
     );
 }
-export default Resetpassword;
+export default SellerForgotPassword;

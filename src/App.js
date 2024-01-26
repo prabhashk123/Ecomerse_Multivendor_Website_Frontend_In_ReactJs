@@ -60,6 +60,8 @@ import AllSellers from './components/AllSellers';
 import SellerDetail from './components/Seller/SellerDetail';
 import SellerRegister from './components/Seller/SellerRegister';
 import SellerLogin from './components/Seller/SellerLogin';
+import SellerForgotPassword from './components/Seller/SellerForgotPassword';
+import SellerResetPassword from './components/Seller/SellerResetPassword';
 import SellerLogout from './components/Seller/SellerLogout';
 import SellerDashboard from './components/Seller/SellerDashboard';
 import SellerProducts from './components/Seller/SellerProducts';
@@ -131,6 +133,8 @@ function App() {
           <Route path='/sellers' element={<AllSellers />} />
           <Route path='/seller/:seller_username/:seller_id' element={<SellerDetail/>} />
           <Route path='/seller/login' element={<SellerLogin />} />
+          <Route path='/seller/forgotpassword' element={<SellerForgotPassword/>} />
+          <Route path='/seller/resetpassword/:vendor_id' element={<SellerResetPassword />} />
           <Route path='/seller/logout' element={<SellerLogout />} />
           <Route path='/seller/register' element={<SellerRegister />} />
           <Route path='/seller/dashboard' element={<SellerDashboard />} />

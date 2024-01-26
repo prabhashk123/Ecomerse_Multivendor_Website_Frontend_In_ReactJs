@@ -5,31 +5,30 @@ import { useState,useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
-function Resetpassword() {
+function SellerResetPassword() {
     const baseUrl = 'http://127.0.0.1:8000/api';
-    const { customer_id } = useParams();
+    const { vendor_id } = useParams();
     const [successMsg, setsuccessMsg] = useState('');
     const [errorMsg, seterrorMsg] = useState('');
-    const [CustomerPasswordData, setCustomerPasswordData] = useState({
+    const [SellerPasswordData, setSellerPasswordData] = useState({
         'password': '',
     });
 
     const HandleChange = (event) => {
         // ... merge data
-        setCustomerPasswordData({
-            ...CustomerPasswordData,
+        setSellerPasswordData({
+            ...SellerPasswordData,
             [event.target.name]: event.target.value
         });
 
     };
     // submit request
     const submitHandler = () => {
-        const CustomerFormData = new FormData();
-        CustomerFormData.append('password', CustomerPasswordData.password)
-        console.log(CustomerFormData);
+        const SellerFormData = new FormData();
+        SellerFormData.append('password', SellerPasswordData.password)
         // submit data form
         try {
-            axios.post(baseUrl + '/customer-reset-password/' + customer_id + '/', CustomerFormData)
+            axios.post(baseUrl + '/vendor-reset-password/' + vendor_id + '/', SellerFormData)
                 .then((res) => {
                     console.log(res);
                     if (res.data.bool === true) {
@@ -45,12 +44,12 @@ function Resetpassword() {
             console.log(error);
         }
     }
-    const customerLoginStaus = localStorage.getItem('customerLoginStaus')
-    if (customerLoginStaus == 'true') {
-        window.location.href('/customer/dashboard')
+    const sellerLoginStaus = localStorage.getItem('sellerLoginStaus')
+    if (sellerLoginStaus == 'true') {
+        window.location.href('/seller/dashboard')
     }
     useEffect(() => {
-        document.title = 'Customer -Reset Password'
+        document.title = 'Seller -Reset Password'
     })
 
     return (
@@ -62,7 +61,7 @@ function Resetpassword() {
                         <Form className='text-light w-61'>
                             <Form.Group className="mb-3" controlId="formBasicPassword">
                                 <Form.Label htmlFor='password'>New Password</Form.Label>
-                                <Form.Control type="password" value={CustomerPasswordData.password} id='pwd' placeholder='Enter new password' name='password' onChange={HandleChange} />
+                                <Form.Control type="password" value={SellerPasswordData.password} id='pwd' placeholder='Enter new password' name='password' onChange={HandleChange} />
                             </Form.Group>
                             {
                                 errorMsg && <p className='text-danger bg-light'>{errorMsg}<strong></strong></p>
@@ -71,7 +70,7 @@ function Resetpassword() {
                                 Update
                             </Button>
                             <Button className='mb-3 item-center ms-2'>
-                                <Link className='text-decoration-none text-light' to='/customer/login'>Login</Link>
+                                <Link className='text-decoration-none text-light' to='/seller/login'>Login</Link>
                             </Button>
                         </Form>
                     </div>
@@ -83,4 +82,4 @@ function Resetpassword() {
         </>
     );
 }
-export default Resetpassword;
+export default SellerResetPassword;
