@@ -180,7 +180,7 @@ function Header(props) {
             </NavDropdown>
             {/* Admin Pannel end */}
             <li className="nav-item">
-              <span className="nav-link text-light">
+              <span className="nav-link text-dark">
                 <select onChange={changeCurrency}>
                   <option value='inr'>INR</option>
                   <option value='usd'>USD</option>

@@ -73,7 +73,7 @@ function AllCustomersOrders() {
                                             <td>{item.order.id}</td>
                                             <td>{item.id}</td>
                                             <td>{item.product.id}</td>
-                                            <td>{item.product.vendor.mobile}</td>
+                                            <td>{item.product.vendor.id}</td>
                                             <td><Link><img src={`${baseUrl}/${item.product.image}`} className="img-thumbnail" width='80' alt="..." /></Link>
                                                 <p><Link className='text-decoration-none'>{item.product.title}</Link></p>
                                             </td>

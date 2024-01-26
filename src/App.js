@@ -55,6 +55,7 @@ import AllVendorProducts from './components/Admin/AllVendorProducts';
 import AllCustomersOrders from './components/Admin/AllCustomersOrders';
 import AllVendors from './components/Admin/AllVendors';
 import AllReports from './components/Admin/AllReports';
+import Vendorproductdetails from './components/Admin/vendorproductsdetails';
 // Seller/Vendor Pannel
 import AllSellers from './components/AllSellers';
 import SellerDetail from './components/Seller/SellerDetail';
@@ -104,6 +105,7 @@ function App() {
           <Route path='/admin/allcustomers' element={<AllCustomer />} />
           <Route path='/admin/allvendors' element={<AllVendors />} />
           <Route path='/admin/allreports' element={<AllReports />} />
+          <Route path='/product/:product_id' element={<Vendorproductdetails />} />
           <Route path='/' element={<Home />} />
           <Route path='/products' element={<AllProducts />} />
           <Route path='/categories' element={<Categories />} />
