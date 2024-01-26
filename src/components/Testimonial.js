@@ -6,7 +6,7 @@ function Testimonial(props) {
     // const index = props.index;
     // const item = props.item;
     const baseUrl = 'http://127.0.0.1:8000/api';
-    const baseImgUrl = 'http://127.0.0.1:8000';
+    // const baseImgUrl = 'http://127.0.0.1:8000';
     const [ReviewsList, setReviewsList] = useState([]);
     // const [Starlist, setStarlist] = useState(0);
     useEffect(() => {
@@ -23,18 +23,13 @@ function Testimonial(props) {
     }
     // stars
     // var _stars = [];
-    // var items=Starlist;
-    // // console.log(ReviewsList);
-    // for (let i = 0; i < items.rating; i++) {
+    // console.log(ReviewsList);
+    // for (let i = 0; i < ReviewsList.rating; i++) {
     //     _stars.push('1');
+    //     // console.log('starts',_stars)
     // }
 
     return (
-        //     <figcaption className="blockquote-footer mb-5">
-        //         {
-        //             _stars.map((item, index) => <i className='fa fa-star text-warning'></i>)
-        //         }
-        //     </figcaption>
         <Carousel>
             {
                 ReviewsList.map((item, index) =>
@@ -46,7 +41,7 @@ function Testimonial(props) {
                             <figcaption className="blockquote-footer mb-5">
                                 {item.rating}
                                 {/* {
-                                    _stars.map((items, index) => <i className='fa fa-star text-warning'></i>)
+                                    _stars.map((item, index) => <i className='fa fa-star text-warning'></i>)
                                 } */}
                                 <cite title="Source Title"> {`${item.customer.user.first_name} ${item.customer.user.last_name}`}</cite>
                             </figcaption>

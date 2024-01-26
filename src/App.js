@@ -30,6 +30,8 @@ import OrderFaliure from './components/OrderFaliure';
 // Customer pannel
 import Register from './components/Customer/Register';
 import Login from './components/Customer/Login';
+import Customerforgotpassword from './components/Customer/Customerforgotpassword';
+import Resetpassword from './components/Customer/Resetpassword';
 import Dashboard from './components/Customer/Dashboard';
 import Logout from './components/Customer/Logout';
 import Oders from './components/Customer/Orders';
@@ -113,6 +115,8 @@ function App() {
           <Route path='/order/faliure' element={<OrderFaliure />} />
           <Route path='/customer/register' element={<Register />} />
           <Route path='/customer/login' element={<Login />} />
+          <Route path='/customer/forgotpassword' element={<Customerforgotpassword />} />
+          <Route path='/customer/resetpassword/:customer_id' element={<Resetpassword />} />
           <Route path='/customer/dashboard' element={<Dashboard />} />
           <Route path='/customer/orders' element={<Oders />} />
           <Route path='/customer/wishlist' element={<Wishlist />} />
@@ -144,7 +148,6 @@ function App() {
           <Route path='/seller/vendorchangepassword' element={<VendorChangePassword />} />
         </Routes>
         <Footer />
-
       </CartContext.Provider>
     </CurrencyContext.Provider>
   );

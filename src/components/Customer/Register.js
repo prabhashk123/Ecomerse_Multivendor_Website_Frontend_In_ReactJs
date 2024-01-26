@@ -3,10 +3,8 @@ import Form from 'react-bootstrap/Form';
 import axios from 'axios';
 import { useState } from 'react';
 
-
 function Register() {
     const baseUrl = 'http://127.0.0.1:8000/api';
-    const [formError, setFormError] = useState(false);
     const [errorMsg, seterrorMsg] = useState('');
     const [successMsg, setsuccessMsg] = useState('');
     const [registerFormData, setregisterFormData] = useState({
@@ -35,9 +33,8 @@ function Register() {
         formData.append('email', registerFormData.email)
         formData.append('mobile', registerFormData.mobile)
         formData.append('password', registerFormData.password)
-        console.log(formData)
-
-        console.log(registerFormData)
+        // console.log(formData)
+        // console.log(registerFormData)
 
         // submit data form
         axios.post(baseUrl + '/customer/register/', formData)
@@ -47,9 +44,6 @@ function Register() {
                     setsuccessMsg('')
                 }
                 else {
-                    // console.log(response.data);
-                    // localStorage.setItem();
-                    // localStorage.setItem();
                     setregisterFormData({
                         'first_name': '',
                         'last_name': '',
@@ -65,7 +59,6 @@ function Register() {
             .catch(function (error) {
                 console.log(error);
             });
-
     };
     // for button enable 
     const buttonEnable = (registerFormData.first_name != '') && (registerFormData.last_name != '') && (registerFormData.username != '') && (registerFormData.email != '') && (registerFormData.mobile != '') && (registerFormData.password != '')

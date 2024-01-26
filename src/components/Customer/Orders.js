@@ -37,6 +37,7 @@ function Oders() {
                                 <table className='table table-bordered'>
                                     <thead>
                                         <tr>
+                                            <th>Sl No.</th>
                                             <th>Ord_Id</th>
                                             <th>Products</th>
                                             <th>Price</th>

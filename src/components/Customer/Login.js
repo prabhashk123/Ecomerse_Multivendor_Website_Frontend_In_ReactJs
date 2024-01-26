@@ -1,8 +1,7 @@
-// import Button from 'react-bootstrap/Button';
-// import Form from 'react-bootstrap/Form';
 import { useState} from 'react';
 import { Form, Button, Alert } from "react-bootstrap";
 import "../login.css";
+import { Link } from 'react-router-dom';
 // for connect to django php react like axios for http client
 import axios from 'axios';
 import BackgroundImage from "../assets/images/background.png";
@@ -18,7 +17,6 @@ function Login(props) {
         "password":''
        
     });
-    // console.log(loginFormData)
     // create arrow function
     const inputHandler = (event) =>{
         // ... merge data
@@ -27,6 +25,7 @@ function Login(props) {
             [event.target.name]:event.target.value
         })
     };
+    console.log(loginFormData);
     const submitHandler =(event)=>{
         // send data to server
         let formData=new FormData();
@@ -41,7 +40,7 @@ function Login(props) {
                     seterrorMsg(response.data.msg)
                     
                 }else{
-                    console.log(response.data);
+                    // console.log(response.data);
                     localStorage.setItem('customer_id',response.data.id);
                     localStorage.setItem('customer_login',true);
                     localStorage.setItem('customer_username',response.data.user);
@@ -61,68 +60,6 @@ function Login(props) {
     }
     
     const buttonEnable =(loginFormData.username!='') && (loginFormData.password!='')
-    // console.log(loginFormData)
-
-//     return (
-//         <>
-//             <div className='container bg-secondary mt-1 w-50'>
-//             <h3 className="mb-3 text-light">Login</h3>
-//                 <Form className='text-light w-61'>
-
-//                     <Form.Group className="mb-3" controlId="formBasicEmail">
-//                         <Form.Label for='username'>Username</Form.Label>
-//                         <Form.Control type="text" name='username' value={loginFormData.usrename} onChange={inputHandler} id='username' />
-//                     </Form.Group>
-//                     <Form.Group className="mb-3" controlId="formBasicPassword">
-//                         <Form.Label for='pwd'>Password</Form.Label>
-//                         <Form.Control type="password" name='password' value={loginFormData.password} onChange={inputHandler} id='pwd' />
-//                     </Form.Group>
-//                     <Button className='mb-2 item-center' variant="primary" onClick={submitHandler} type="button">
-//                         Login
-//                     </Button>
-//                 </Form>
-//             </div>
-//         </>
-//     );
-// }
-// export default Login;
-
-// const Login = () => {
-    // const baseUrl = 'http://127.0.0.1:8000/api';
-    // const [username, setInputUsername] = useState("");
-    // const [password, setInputPassword] = useState("");
-
-    // const [show, setShow] = useState(false);
-    // const [loading, setLoading] = useState(false);
-
-    // const handleSubmit = async (event) => {
-    //     event.preventDefault();
-    //     setLoading(true);
-    //     axios.post(baseUrl+'/customer/login/', {
-    //         username: '',
-    //         password: '',
-    //       })
-    //       .then(function (response){
-    //         console.log(response);
-    //       })
-    //       .catch(function (error) {
-    //         console.log(error);
-    //       });
-
-        // await delay(500);
-    // console.log(`Username :${username}, Password :${password}`);
-    // if (username !== 'username' || password !== 'password') {
-    //     setShow(true);
-    // }
-    //     setLoading(false);
-    // };
-
-    // const handlePassword = () => { };
-
-    // function delay(ms) {
-    //     return new Promise((resolve) => setTimeout(resolve, ms));
-    // }
-
     return (
         <div
             className="sign-in__wrapper"
@@ -180,16 +117,9 @@ function Login(props) {
                 <Button className="w-100" onClick={submitHandler}  disabled={!buttonEnable} variant="primary" type="button">
                         Log In
                     </Button>
+                    <p className='mt-3'><strong>Don't have an account?<Link className='text-decoration-none text-primary' to='/customer/register'> Sign Up</Link></strong></p>
+                    <p className='mt-3'><strong>Forgot your Password?<Link className='text-decoration-none text-primary' to='/customer/forgotpassword'> Reset Password</Link></strong></p>
                     {formError &&<p className='text-danger'>{errorMsg}</p>}
-                {/* <div className="d-grid justify-content-end">
-                    <Button
-                        className="text-muted px-0"
-                        variant="link"
-                        onClick={handlePassword}
-                    >
-                        Forgot password?
-                    </Button>
-                </div> */}
             </Form>
             {/* Footer */}
             <div className="w-100 mb-2 position-absolute bottom-0 start-50 translate-middle-x text-white text-center">
