@@ -3,13 +3,11 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import AdminSidebar from './AdminSidebar';
 import { Dropdown } from 'react-bootstrap';
-import Vendorproductdetails from './vendorproductsdetails';
 
 function AllVendorProducts() {
     const baseUrl = 'http://127.0.0.1:8000/api';
     const [ProductData, setProductData] = useState([]);
-    const[view,setView]=useState(false);
-
+ 
     useEffect(() => {
         fetchdata(baseUrl + '/products');
     }, []);

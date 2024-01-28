@@ -56,6 +56,7 @@ import AllCustomersOrders from './components/Admin/AllCustomersOrders';
 import AllVendors from './components/Admin/AllVendors';
 import AllReports from './components/Admin/AllReports';
 import Vendorproductdetails from './components/Admin/vendorproductsdetails';
+import AllNotifications from './components/Admin/AllNotifications';
 // Seller/Vendor Pannel
 import AllSellers from './components/AllSellers';
 import SellerDetail from './components/Seller/SellerDetail';
@@ -67,6 +68,7 @@ import SellerLogout from './components/Seller/SellerLogout';
 import SellerDashboard from './components/Seller/SellerDashboard';
 import SellerProducts from './components/Seller/SellerProducts';
 import AddProduct from './components/Seller/AddProduct';
+import Contactus from './components/Contactus';
 import UpdateProduct from './components/Seller/UpdateProduct';
 import VendorOders from './components/Seller/VendorOders';
 import Customer from './components/Seller/Customer';
@@ -106,6 +108,7 @@ function App() {
           <Route path='/admin/allvendors' element={<AllVendors />} />
           <Route path='/admin/allreports' element={<AllReports />} />
           <Route path='/product/:product_id' element={<Vendorproductdetails />} />
+          <Route path='/admin/allnotifications' element={<AllNotifications />} />
           <Route path='/' element={<Home />} />
           <Route path='/products' element={<AllProducts />} />
           <Route path='/categories' element={<Categories />} />
@@ -114,6 +117,7 @@ function App() {
           <Route path='/product/:product_slug/:product_id' element={<ProductDetail />} />
           <Route path='/checkout' element={<Checkout />} />
           <Route path='/confirm-order' element={<ConfirmOrder />} />
+          <Route path='/contact' element={<Contactus/>} />
           {/* Customer Panel */}
           <Route path='/order/success' element={<OrderSuccess />} />
           <Route path='/order/faliure' element={<OrderFaliure />} />
