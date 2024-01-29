@@ -1,7 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useState} from 'react';
 
 
 function SellerRegister() {
@@ -36,9 +36,7 @@ function SellerRegister() {
         formData.append('mobile', registerFormData.mobile)
         formData.append('address', registerFormData.address)
         formData.append('password', registerFormData.password)
-        console.log(formData)
-        console.log(registerFormData)
-
+       
         // submit data form
         axios.post(baseUrl + '/vendor/register/', formData)
             .then(function (response) {
