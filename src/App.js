@@ -96,7 +96,7 @@ function App() {
         <Routes>
           {/* Admin Panel */}
           <Route path='/admin/dashboard' element={<AdminDashboard />} />
-          <Route path='/owner/about' element={<AboutUs />} />
+          <Route path='/about' element={<AboutUs />} />
           <Route path='/admin/login' element={<AdminLogin />} />
           <Route path='/admin/logout' element={<AdminLogout />} />
           <Route path='/admin/category' element={<AdminCategory />} />

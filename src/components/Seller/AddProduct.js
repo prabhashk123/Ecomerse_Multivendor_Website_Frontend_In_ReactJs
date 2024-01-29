@@ -142,10 +142,10 @@ function AddProduct() {
                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                 <Form.Label htmlForr='Category'>Category</Form.Label>
                                 <Form.Select name='category' onChange={inputHandler} aria-label="Default select example">
-                                    <option>Open to Select Product Category</option>
-                                    {
+                                    <option>Open to Se {
                                         CategoryData.map((item, index) => <option value={item.id}>{item.title}</option>)
-                                    }
+                                    }lect Product Category</option>
+                                   
                                     <Form.Control type="select" id='category' />
                                 </Form.Select>
                             </Form.Group>
