@@ -12,7 +12,7 @@ function Sidebar() {
             <Link className='text-decoration-none text-dark' to='/seller/customers'><ListGroup.Item as="li">Customers</ListGroup.Item></Link>
             <Link className='text-decoration-none text-dark' to='/seller/reports'><ListGroup.Item as="li">Reports</ListGroup.Item></Link>
             <Link className='text-decoration-none text-dark' to='/seller/vendorprofile'><ListGroup.Item as="li">Profile</ListGroup.Item></Link>
-            <Link className='text-decoration-none text-dark' to='/seller/contactus'><ListGroup.Item as="li">Contact Us</ListGroup.Item></Link>
+            {/* <Link className='text-decoration-none text-dark' to='/seller/contactus'><ListGroup.Item as="li">Contact Us</ListGroup.Item></Link> */}
             <Link className='text-decoration-none text-dark' to='/seller/vendorchangepassword'><ListGroup.Item as="li">Change Password</ListGroup.Item></Link>
             <ListGroup.Item as="li"><Link to='/seller/logout' className='text-decoration-none text-danger'>LogOut</Link></ListGroup.Item>
         </ListGroup>

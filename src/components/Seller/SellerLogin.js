@@ -42,6 +42,7 @@ function SellerLogin() {
                     localStorage.setItem('vendor_id', response.data.id);
                     localStorage.setItem('vendor_login', true);
                     localStorage.setItem('vendor_username', response.data.user);
+                    // localStorage.setItem('first_name', response.data.user.first_name);
                     setFormError(false);
                     seterrorMsg('');
                 }

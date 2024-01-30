@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 
 function AllVendors() {
     const baseApiUrl = 'http://127.0.0.1:8000/api';
-    const vendor_id = localStorage.getItem('vendor_id');
     const [VendorList, setVendorList] = useState([]);
 
     useEffect(() => {

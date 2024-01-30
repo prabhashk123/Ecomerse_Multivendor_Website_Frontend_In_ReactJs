@@ -38,7 +38,7 @@ function UpdateCategory() {
         }
     };
 
-// For data fatch one time render
+    // For data fatch one time render
     useEffect(() => {
         setCategoryData({
             ...CategoryData,
@@ -54,17 +54,14 @@ function UpdateCategory() {
                 setCategoryData(data);
             });
     }
-  
-    // Submit All Data
+
+    // Submit button
     const submitHandler = () => {
         // send data to server
         const formData = new FormData();
         formData.append('title', CategoryData.title);
         formData.append('detail', CategoryData.detail);
-        // submit data
-        axios.post(baseUrl + '/categories/', formData, {
-        })
-        // Condition for image update
+        // Condition for cat_image update
         if (IsCatImageSelected) {
             formData.append('cat_img', CategoryData.cat_img);
         }
@@ -78,11 +75,11 @@ function UpdateCategory() {
             .then(function (response) {
                 if (response.status == 200) {
                     setErrorMsg('');
-                    setSuccessMsg(response.statusText);
+                    setSuccessMsg('Category updated successfully!!');
 
                 } else {
                     setSuccessMsg('');
-                    setErrorMsg(response.statusText);
+                    setErrorMsg('Oops something went to wrong!!please try again later!!');
                 }
             })
             .catch(function (error) {
@@ -99,8 +96,8 @@ function UpdateCategory() {
                     </div>
                     <div className='container bg-secondary mt-3 mb-4 w-50'>
                         <h3 className="mb-3 text-light">Update Category</h3>
-                        {SuccessMsg && <p className='text-dark'>{SuccessMsg}</p>}
-                        {ErrorMsg && <p className='text-danger'>{ErrorMsg} </p>}
+                        {SuccessMsg && <p className='text-success bg-white'><strong>{SuccessMsg}</strong></p>}
+                        {ErrorMsg && <p className='text-danger bg-white'><strong>{ErrorMsg}</strong> </p>}
                         <Form className='text-light w-61'>
                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                 <Form.Label htmlForr='Title'>Title</Form.Label>
@@ -111,11 +108,9 @@ function UpdateCategory() {
                                 <Form.Control name='detail' onChange={inputHandler} value={CategoryData.detail} as="textarea" id='detail' rows={3} />
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="formBasicPassword">
-                                <p>
-                                    <img src={CategoryData.cat_img} width='100' className='mt-1' />
-                                </p>
                                 <Form.Label htmlFor='productcategoryimg'>Category Images</Form.Label>
                                 <Form.Control name='cat_img' onChange={fileHandler} type="file" id='productcategoryimg' />
+                                <img src={CategoryData.cat_img} width='100' className='img my-3' />
                             </Form.Group>
                             <Button className='mb-2 item-center' variant="primary" onClick={submitHandler} type="button">
                                 Submit

@@ -23,6 +23,12 @@ function AddReview() {
     };
     // for submit
     const submitHandler = () => {
+        // for validations
+        if(ReviewFormData.reviews==null){
+            setErrorMsg("Please enter your reviews  here.");
+            setSuccessMsg("");
+            return;
+        }
         const formData = new FormData();
         formData.append('reviews', ReviewFormData.reviews);
         formData.append('rating', ReviewFormData.rating);
@@ -32,11 +38,11 @@ function AddReview() {
             .then(function (response) {
                 console.log(response);
                 if (response.status != 201) {
-                    setErrorMsg("Data not saved");
+                    setErrorMsg("Oops something went to wrong!!please try again!");
                     setSuccessMsg("");
                 } else {
                     setErrorMsg("");
-                    setSuccessMsg("Your Review Saved");
+                    setSuccessMsg("Your Review has been Saved!!Thankyou!");
                     setReviewFormData({
                         'reviews': '',
                         'rating': ''
@@ -47,8 +53,8 @@ function AddReview() {
                 console.log(error);
             });
     };
-    // for disabled
-    const disabledBtn = (ReviewFormData.rating == '') && (ReviewFormData.reviews == '');
+    // for submit button disabled
+    const buttonEnable = (ReviewFormData.reviews != '');
 
 
     return (
@@ -79,7 +85,7 @@ function AddReview() {
                                 </Form.Select>
                             </Form.Group>
 
-                            <Button className='mb-2 item-center' variant="primary" type="button" disabled={disabledBtn} onClick={submitHandler}>
+                            <Button className='mb-2 item-center' variant="primary" type="button" disabled={!buttonEnable} onClick={submitHandler}>
                                 Submit
                             </Button>
                         </Form>

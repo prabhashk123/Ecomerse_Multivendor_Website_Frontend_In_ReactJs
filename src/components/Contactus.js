@@ -68,7 +68,7 @@ function Contactus() {
                     setSuccessMsg("");
                 } else {
                     setErrorMsg("");
-                    setSuccessMsg("Request saved!!Teams will be contact soon!!Thankyou!!");
+                    setSuccessMsg("Request has been saved!!Teams will be contact soon!!Thankyou!!");
                     setcontactUsData({
                         'name': '',
                         'email': '',
@@ -97,8 +97,8 @@ function Contactus() {
             <h3 className="d-flex justify-content-center">CONTACT US</h3>
             <div className="cotainer btn-secondary">
                 <p className='container  w-50'><strong className='text-dark'>Note:</strong> All fields are required*</p>
-                {SuccessMsg && <p className='text-warning container w-50'><strong>{SuccessMsg}</strong></p>}
-                {ErrorMsg && <p className='text-danger container w-50'><strong>{ErrorMsg}</strong></p>}
+                {SuccessMsg && <p className='container text-success w-50 bg-white'><strong>{SuccessMsg}</strong></p>}
+                {ErrorMsg && <p className='container text-danger w-50 bg-white px-200'><strong>{ErrorMsg}</strong> </p>}
                 <div className="container w-50 ">
                     <form>
                         <div className="mb-2">

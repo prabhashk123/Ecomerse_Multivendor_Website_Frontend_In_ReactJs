@@ -17,10 +17,10 @@ function UpdateProduct() {
     const [IsFeaturedImageSelected, setIsFeaturedImageSelected] = useState(false);
     const [IsProductFileSelected, setIsProductFileSelected] = useState(false);
     const [IsMultipleProductImageSelected, setIsMultipleProductImageSelected] = useState(false);
-    const [IsImageDeleted, setIsImageDeleted] = useState(false);
+    // const [IsImageDeleted, setIsImageDeleted] = useState(false);
     const [ProductImgs, setProductImgs] = useState([]);
     const [ProductData, setProductData] = useState({
-        'vendor': '',
+        // 'vendor': '',
         'category': '',
         'title': '',
         'slug': '',
@@ -103,9 +103,15 @@ function UpdateProduct() {
     }
     // Submit
     const submitHandler = () => {
+        // for validations
+        if(ProductData.demo_url==null){
+            setErrorMsg("Please enter a valid demo URL.");
+            setSuccessMsg("");
+            return;
+        }
         // send data to server
         const formData = new FormData();
-        formData.append('vendor', ProductData.vendor);
+        // formData.append('vendor', ProductData.vendor);
         formData.append('category', ProductData.category);
         formData.append('title', ProductData.title);
         formData.append('slug', ProductData.slug);
@@ -131,7 +137,7 @@ function UpdateProduct() {
             .then(function (response) {
                 if (response.status == 200) {
                     setErrorMsg('');
-                    setSuccessMsg(response.statusText);
+                    setSuccessMsg('Product updated successfully!!');
                     // for multiple image
                     if (IsMultipleProductImageSelected) {
                         for (let i = 0; i < ProductImgs.length; i++) {
@@ -151,7 +157,7 @@ function UpdateProduct() {
                     }
                 } else {
                     setSuccessMsg('');
-                    setErrorMsg(response.statusText);
+                    setErrorMsg('Oops something went to wrong!!please try again later!!');
                 }
             })
             .catch(function (error) {
@@ -168,8 +174,8 @@ function UpdateProduct() {
                     </div>
                     <div className='container bg-secondary mb-4 mt-3 w-50'>
                         <h3 className="mb-3 text-light">Update Product</h3>
-                        {SuccessMsg && <p className='text-dark'>{SuccessMsg}</p>}
-                        {ErrorMsg && <p className='text-danger'>{ErrorMsg} </p>}
+                        {SuccessMsg && <p className='text-success bg-white'><strong>{SuccessMsg}</strong></p>}
+                        {ErrorMsg && <p className='text-danger bg-white'><strong>{ErrorMsg}</strong> </p>}
                         <Form className='text-light w-61'>
                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                 <Form.Label htmlForr='Category'>Category</Form.Label>

@@ -64,6 +64,26 @@ function AddProduct() {
     }
     // Submit
     const submitHandler = () => {
+        if(ProductData.category==''){
+            setErrorMsg("category field may not be blank");
+            setSuccessMsg("");
+            return;
+        }
+        if(ProductData.title==''){
+            setErrorMsg("Title field may not be blank");
+            setSuccessMsg("");
+            return;
+        }
+        if(ProductData.price==''){
+            setErrorMsg("Price field has valid number required");
+            setSuccessMsg("");
+            return;
+        }
+        if(ProductData.image==''){
+            setErrorMsg("Featured Images field may not be blank");
+            setSuccessMsg("");
+            return;
+        }
         // send data to server
         const formData = new FormData();
         formData.append('vendor', ProductData.vendor);
@@ -100,7 +120,7 @@ function AddProduct() {
                         'product_file': '',
                     });
                     setErrorMsg('');
-                    setSuccessMsg(response.statusText);
+                    setSuccessMsg('New product added successfully!!');
 
                     for (let i = 0; i < ProductImgs.length; i++) {
                         const ImageFormData = new FormData();
@@ -119,7 +139,7 @@ function AddProduct() {
                     setProductImgs('');
                 } else {
                     setSuccessMsg('');
-                    setErrorMsg(response.statusText);
+                    setErrorMsg('Oops something went to wrong!!please try again later!!');
                 }
             })
             .catch(function (error) {
@@ -136,16 +156,16 @@ function AddProduct() {
                     </div>
                     <div className='container bg-secondary mt-3 w-50'>
                         <h3 className="mb-3 text-light">Add Product</h3>
-                        {SuccessMsg && <p className='text-dark'>{SuccessMsg}</p>}
-                        {ErrorMsg && <p className='text-danger'>{ErrorMsg} </p>}
+                        {SuccessMsg && <p className='text-success bg-white'><strong>{SuccessMsg}</strong></p>}
+                        {ErrorMsg && <p className='text-danger bg-white'><strong>{ErrorMsg}</strong> </p>}
                         <Form className='text-light w-61'>
                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                 <Form.Label htmlForr='Category'>Category</Form.Label>
                                 <Form.Select name='category' onChange={inputHandler} aria-label="Default select example">
-                                    <option>Open to Se {
+                                    <option>Open to Select Product Category</option>
+                                    {
                                         CategoryData.map((item, index) => <option value={item.id}>{item.title}</option>)
-                                    }lect Product Category</option>
-                                   
+                                    }
                                     <Form.Control type="select" id='category' />
                                 </Form.Select>
                             </Form.Group>

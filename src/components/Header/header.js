@@ -13,6 +13,7 @@ function Header(props) {
   const { CurrencyData, setCurrencyData } = useContext(CurrencyContext);
   // For seller/vendor Panel
   const checkVendor = localStorage.getItem('vendor_login');
+  const vendor_username = localStorage.getItem('vendor_username');
   // for Admin Panel
   const checkAdmin = localStorage.getItem('owner_login');
   // Conditions for Cart
@@ -127,7 +128,18 @@ function Header(props) {
                 <Link className="nav-link text-light" to="/checkout">New Order(5)</Link>
               </li>
               {/* Seller/Vendor pannel */}
-              <NavDropdown title="Vendor Panel" id="nav-dropdown">
+
+              {/* {
+                vendor_username &&
+                 <NavDropdown title={vendor_username} id="nav-dropdown">
+                  
+              }
+              {
+                !vendor_username && 
+                 <NavDropdown title='Vendor Panel' id="nav-dropdown">
+              } */}
+              <NavDropdown title='Vendor Panel' id="nav-dropdown">
+                {/* <NavDropdown  title={vendor_username} id="nav-dropdown"> */}
                 {
                   checkVendor &&
                   <>

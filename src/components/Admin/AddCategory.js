@@ -35,6 +35,12 @@ function AddCategory() {
     }, []);
 
     const submitHandler = () => {
+        // validation
+        if(CategoryData.title==''){
+            setErrorMsg("Title field may not be blank");
+            setSuccessMsg("");
+            return;
+        }
         // send data to server
         const formData = new FormData();
         formData.append('title', CategoryData.title);
@@ -54,10 +60,10 @@ function AddCategory() {
                         'cat_img': '',
                     });
                     setErrorMsg('');
-                    setSuccessMsg(response.statusText);
+                    setSuccessMsg('New product cateogry added successfully!!');
                 } else {
                     setSuccessMsg('');
-                    setErrorMsg(response.statusText);
+                    setErrorMsg('Oops something went to wrong!!please try again later!!');
                 }
             })
             .catch(function (error) {
@@ -74,8 +80,8 @@ function AddCategory() {
                     </div>
                     <div className='container bg-secondary mt-3 mb-4 w-50'>
                         <h3 className="mb-3 text-light">Add Category</h3>
-                        {SuccessMsg && <p className='text-dark'>{SuccessMsg}</p>}
-                        {ErrorMsg && <p className='text-danger'>{ErrorMsg} </p>}
+                        {SuccessMsg && <p className='text-success bg-white'><strong>{SuccessMsg}</strong></p>}
+                        {ErrorMsg && <p className='text-danger bg-white'><strong>{ErrorMsg}</strong></p>}
                         <Form className='text-light w-61'>
                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                 <Form.Label htmlForr='Title'>Title</Form.Label>
