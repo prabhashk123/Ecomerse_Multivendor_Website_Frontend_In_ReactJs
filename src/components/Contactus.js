@@ -111,7 +111,9 @@ function Contactus() {
                                 placeholder="name@example.com" />
                         </div>
                         <div className="row mb-2">
-                            <label for="exampleFormControlInput1" className="form-label">Phone</label>
+                            <label for="exampleFormControlInput1" className="form-label">Phone Code 
+                            <label for="exampleFormControlInput1" className="form-label ml-5 px-5 ">Phone No.</label>
+                            </label>
                             <select onChange={inputHandler} className="form-select form-select-sm ms-2" style={{ width: 180 }} aria-label=".form-select-sm example" value={contactUsData.code} name='code'>
                                 <option selected>Select countary code</option>
                                 <option value='+91'>india(+91)</option>
