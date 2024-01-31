@@ -200,7 +200,7 @@ function Header(props) {
                 </span>
               </li>
               <NavDropdown title="Help!" id="nav-dropdown">
-                <NavDropdown.Item eventKey="4.1"><Link className='text-decoration-none' to='/contact'>Contact</Link></NavDropdown.Item>
+                <NavDropdown.Item eventKey="4.1"><Link className='text-decoration-none' to='/contact'>ContactUs</Link></NavDropdown.Item>
                 <NavDropdown.Item eventKey="4.4"><Link className='text-decoration-none' to='/about'>About</Link></NavDropdown.Item>
               </NavDropdown>
             </ul>
