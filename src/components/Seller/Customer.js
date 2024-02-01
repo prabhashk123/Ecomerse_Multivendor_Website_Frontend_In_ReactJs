@@ -47,6 +47,7 @@ function Customer() {
                             <table className='table table-bordered'>
                                 <thead>
                                     <tr>
+                                        <th>Sl N0.</th>
                                         <th>C_Id</th>
                                         <th>Name</th>
                                         <th>Email</th>
@@ -57,6 +58,7 @@ function Customer() {
                                 <tbody>
                                     {
                                         CustomerList.map((item, index) => <tr>
+                                            <td>{index+1}</td>
                                             <td>{item.customer.id}</td>
                                             <td>
                                                 {item.user.first_name} {item.user.last_name}

@@ -39,6 +39,7 @@ function Oders() {
                                         <tr>
                                             <th>Sl No.</th>
                                             <th>Ord_Id</th>
+                                            <th>Item_Id</th>
                                             <th>Products</th>
                                             <th>Price</th>
                                             <th>Status</th>

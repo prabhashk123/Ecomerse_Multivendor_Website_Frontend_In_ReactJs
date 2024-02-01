@@ -68,7 +68,10 @@ function SellerProducts() {
                                         ProductData.map((product, index) => {
                                             return <tr>
                                                 <td>{product.id}</td>
-                                                <td><Link className='text-decoration-none' to={`/seller/update-product/${product.id}`}>{product.title}</Link></td>
+                                                <td>
+                                                <img src={product.image} className="img-thumbnail" width='80' alt="..." />
+                                                    <Link className='text-decoration-none' to={`/seller/update-product/${product.id}`}>{product.title}</Link>
+                                                </td>
                                                 <td>&#8377;{product.price}</td>
                                                 <td>${product.usd_price}</td>
                                                 <td>

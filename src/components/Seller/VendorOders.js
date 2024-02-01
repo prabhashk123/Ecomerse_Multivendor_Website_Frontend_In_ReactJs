@@ -47,13 +47,12 @@ function VendorOders() {
                         <SellerSidebar />
                     </div>
                     <div className='col-md-9 col-12 mb-2 mt-3'>
-                        {/* <h3><Link to='/seller/addproduct' className='btn btn-primary mb-2 float-end'><i className='fa fa-plus-circle'></i> Add Product</Link></h3> */}
                         <div className='table-responsive'>
                             <table className='table table-bordered'>
                                 <thead>
                                     <tr>
-                                        <th>Sl No</th>
                                         <th>Orde_Id</th>
+                                        <th>Item_Id</th>
                                         <th>Product</th>
                                         <th>Price</th>
                                         {/* <th>Usd_Price</th> */}
@@ -66,8 +65,8 @@ function VendorOders() {
                                 <tbody>
                                     {
                                         OrderItems.map((item, index) => <><tr>
-                                            <td>{index+1}</td>
                                             <td>{item.order.id}</td>
+                                            <td>{item.id}</td>
                                             <td><Link><img src={`${baseUrl}/${item.product.image}`} className="img-thumbnail" width='80' alt="..." /></Link>
                                                 <p><Link className='text-decoration-none'>{item.product.title}</Link></p>
                                             </td>

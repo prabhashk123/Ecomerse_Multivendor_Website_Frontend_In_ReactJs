@@ -57,7 +57,7 @@ function Wishlist() {
                                 <table className='table table-bordered'>
                                     <thead>
                                         <tr>
-                                            <th>#</th>
+                                            <th>Sl No</th>
                                             <th>Products</th>
                                             <th>Price</th>
                                             <th>Action</th>

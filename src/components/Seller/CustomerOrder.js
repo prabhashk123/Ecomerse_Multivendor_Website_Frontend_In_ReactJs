@@ -54,7 +54,10 @@ function CustomerOders() {
                             <table className='table table-bordered'>
                                 <thead>
                                     <tr>
-                                        <th>Id</th>
+                                        <th>Sl No.</th>
+                                        <th>Order_id</th>
+                                        <th>Item_id</th>
+                                        <th>prod_id</th>
                                         <th>Product</th>
                                         <th>Price</th>
                                         {/* <th>Usd_Price</th> */}
@@ -65,7 +68,10 @@ function CustomerOders() {
                                 <tbody>
                                     {
                                         OrderItems.map((item, index) => <><tr>
+                                            <td>{index+1}</td>
+                                            <td>{item.order.id}</td>
                                             <td>{item.id}</td>
+                                            <td>{item.product.id}</td>
                                             <td><Link><img src={`${baseUrl}/${item.product.image}`} className="img-thumbnail" width='80' alt="..." /></Link>
                                                 <p><Link className='text-decoration-none'>{item.product.title}</Link></p>
                                             </td>

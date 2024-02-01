@@ -39,6 +39,7 @@ function OrderRows(props) {
         <tr>
             <td>{index+1}</td>
             <td>{item.order.id}</td>
+            <td>{item.id}</td>
             <td>
                 <Link to={`/product/${item.product.slug}/${item.product.id}`}>
                     <img src={`${baseUrl}/${item.product.image}`} className="img-thumbnail" width='80' alt="..." /></Link>
