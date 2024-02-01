@@ -6,12 +6,12 @@ import OrderRows from '../OrderRow';
 
 function Oders() {
     const baseUrl = 'http://127.0.0.1:8000/api';
-    const customerId = localStorage.getItem('customer_id');
+    const customer_d = localStorage.getItem('customer_id');
     const [OrderItems, setOrderItems] = useState([]);
 
 
     useEffect(() => {
-        fetchdata(baseUrl + '/customer/' + customerId + '/orderitems/');
+        fetchdata(baseUrl + '/customer/' + customer_d + '/orderitems/');
     }, []);
 
     function fetchdata(baseUrl) {
