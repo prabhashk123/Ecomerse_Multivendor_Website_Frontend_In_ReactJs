@@ -17,7 +17,7 @@ function OrderRows(props) {
         formData.append('product_id', product_id)
         console.log(formData)
         // submit data form
-        axios.post(baseApiUrl + '/update_product_download_count/' + product_id)
+        axios.post(baseApiUrl + '/update_product_download_count/' + product_id +'/')
             .then(function (response) {
                 console.log(response.data);
                 if (response.data.bool == true) {
