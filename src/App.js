@@ -20,6 +20,8 @@ import CategoryProducts from './components/CategoryProducts';
 import TagProducts from './components/TagProducts';
 // All Products
 import AllProducts from './components/AllProducts';
+// search products
+import SearchProduct from './components/Searchproduct';
 // ProductDetail
 import ProductDetail from './components/ProductDetail';
 // Checkout
@@ -111,6 +113,7 @@ function App() {
           <Route path='/admin/allnotifications' element={<AllNotifications />} />
           <Route path='/' element={<Home />} />
           <Route path='/products' element={<AllProducts />} />
+          <Route path='/search/:searchproductstring' element={<SearchProduct />} />
           <Route path='/categories' element={<Categories />} />
           <Route path='/category/:category_slug/:category_id' element={<CategoryProducts />} />
           <Route path='/products/:tag' element={<TagProducts />} />

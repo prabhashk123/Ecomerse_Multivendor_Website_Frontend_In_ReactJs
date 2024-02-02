@@ -11,9 +11,15 @@ function Header(props) {
   const userContext = useContext(UserContext);
   const { cartData, setCartData } = useContext(CartContext);
   const { CurrencyData, setCurrencyData } = useContext(CurrencyContext);
+  // for product search
+  const [searchProductString, setsearchProductString] = useState({
+    'search': ""
+  });
+  
+
   // For seller/vendor Panel
   const checkVendor = localStorage.getItem('vendor_login');
-  const vendor_username = localStorage.getItem('vendor_username');
+  // const vendor_username = localStorage.getItem('vendor_username');
   // for Admin Panel
   const checkAdmin = localStorage.getItem('owner_login');
   // Conditions for Cart
@@ -34,6 +40,21 @@ function Header(props) {
     position: 'static',
     display: 'flex',
     width: '90px'
+  }
+  // handle input search change
+  const inputSearchHandler = (event) => {
+    setsearchProductString({
+      ...searchProductString,
+      [event.target.name]: event.target.value
+    });
+    // console.log(event.target.name,event.target.value)
+  };
+  // search functionlaity for products
+  const searchProduct = () => {
+    if (searchProductString.search != '') {
+      window.location.href = '/search/' + searchProductString.search
+      // console.log(searchProductString.search)
+    }
   }
 
   return (
@@ -108,9 +129,9 @@ function Header(props) {
                   <option value="search-alias=videogames">Video Games</option>
                   <option value="search-alias=watches">Watches</option>
                 </select>
-                <input className="form-control w-50" type="search" placeholder="Search in website" aria-label="Search" />
+                <input className="form-control w-50" name="search" id="search" onChange={inputSearchHandler} type="search" placeholder="Search in website" aria-label="Search" />
                 <label className="form-label" htmlFor="form1" />
-                <button className="btn btn-warning" type="submit"><i className="fa fa-search" /></button>
+                <button onClick={searchProduct} className="btn btn-warning" type="button"><i className="fa fa-search" /></button>
               </form>
             </div>
             {/* end search */}
