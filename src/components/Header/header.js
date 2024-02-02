@@ -60,11 +60,11 @@ function Header(props) {
     }
     // Check if the selected option is "All Categories".
     const selectedCategory = document.querySelector('.form-select').value;
-    if (selectedCategory === 'search-alias=alc') {
+    if (selectedCategory === 'search-alias=alc' && searchProductString.search === '' ) {
       navigate('/categories')
     }
     const selectedProducts = document.querySelector('.form-select').value;
-    if (selectedProducts === 'search-alias=alp') {
+    if (selectedProducts === 'search-alias=alp' && searchProductString.search === '' ) {
       // redirected by whole page
       // window.location.href = '/products'
       // use navigate to redirect page without all page reloading
