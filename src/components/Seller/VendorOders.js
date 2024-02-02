@@ -51,8 +51,11 @@ function VendorOders() {
                             <table className='table table-bordered'>
                                 <thead>
                                     <tr>
+                                        <th>Sl No.</th>
+                                        <th>Cus_Id</th>
                                         <th>Orde_Id</th>
                                         <th>Item_Id</th>
+                                        <th>Prod_Id</th>
                                         <th>Product</th>
                                         <th>Price</th>
                                         {/* <th>Usd_Price</th> */}
@@ -65,8 +68,11 @@ function VendorOders() {
                                 <tbody>
                                     {
                                         OrderItems.map((item, index) => <><tr>
+                                            <td>{index+1}</td>
+                                            <td>{item.customer.id}</td>
                                             <td>{item.order.id}</td>
                                             <td>{item.id}</td>
+                                            <td>{item.product.id}</td>
                                             <td><Link><img src={`${baseUrl}/${item.product.image}`} className="img-thumbnail" width='80' alt="..." /></Link>
                                                 <p><Link className='text-decoration-none'>{item.product.title}</Link></p>
                                             </td>

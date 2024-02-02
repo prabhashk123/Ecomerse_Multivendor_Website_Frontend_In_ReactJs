@@ -55,6 +55,7 @@ function CustomerOders() {
                                 <thead>
                                     <tr>
                                         <th>Sl No.</th>
+                                        <th>Cus_id</th>
                                         <th>Order_id</th>
                                         <th>Item_id</th>
                                         <th>prod_id</th>
@@ -69,6 +70,7 @@ function CustomerOders() {
                                     {
                                         OrderItems.map((item, index) => <><tr>
                                             <td>{index+1}</td>
+                                            <td>{item.customer.id}</td>
                                             <td>{item.order.id}</td>
                                             <td>{item.id}</td>
                                             <td>{item.product.id}</td>

@@ -50,12 +50,13 @@ function SellerProducts() {
                             <table className='table table-bordered'>
                                 <thead>
                                     <tr>
-                                        <td colSpan='6'>
+                                        <td colSpan='7'>
                                             <Link to='/seller/addproduct' className='btn btn-primary'><i className='fa fa-plus-circle'></i> Add Product</Link>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>Id</th>
+                                        <th>Sl No.</th>
+                                        <th>Prod_Id</th>
                                         <th>Product</th>
                                         <th>Price</th>
                                         <th>Usd Price</th>
@@ -67,9 +68,13 @@ function SellerProducts() {
                                     {
                                         ProductData.map((product, index) => {
                                             return <tr>
+                                                <td>{index + 1}</td>
                                                 <td>{product.id}</td>
+
                                                 <td>
-                                                <img src={product.image} className="img-thumbnail" width='80' alt="..." />
+                                                    <Link to={`/seller/update-product/${product.id}`}>
+                                                        <img src={product.image} className="img-thumbnail" width='80' alt="..." />
+                                                    </Link>
                                                     <Link className='text-decoration-none' to={`/seller/update-product/${product.id}`}>{product.title}</Link>
                                                 </td>
                                                 <td>&#8377;{product.price}</td>

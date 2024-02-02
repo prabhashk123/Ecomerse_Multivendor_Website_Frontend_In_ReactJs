@@ -68,8 +68,8 @@ function Wishlist() {
                                             WishItems.map((item, index) => {
                                                 return <tr id={`row${item.id}`}>
                                                     <td>{index + 1}</td>
-                                                    <td><Link><img src={`${baseUrl}/${item.product.image}`} className="img-thumbnail" width='80' alt="..." /></Link>
-                                                        <p><Link>{item.product.title}</Link></p>
+                                                    <td><Link to={`/product/${item.product.slug}/${item.product.id}`}><img src={`${baseUrl}/${item.product.image}`} className="img-thumbnail" width='80' alt="..." /></Link>
+                                                        <p><Link className='text-decoration-none text-primary' to={`/product/${item.product.slug}/${item.product.id}`}>{item.product.title}</Link></p>
                                                     </td>
                                                     {
                                                         CurrencyData != 'usd' && <td>Rs. {item.product.price}</td>

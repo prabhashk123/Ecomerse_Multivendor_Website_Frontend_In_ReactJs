@@ -108,7 +108,7 @@ function Home(props) {
                                         <img src={`${baseImgUrl}/${category.cat_img}`} style={imgStyle} className="card-img-top" alt={category.title} />
                                     </Link>
                                     <div className="card-body">
-                                        <h4 className="card-title"><h4 className="card-title"><Link to={`/category/${category.title}/${category.id}`}>{category.title}</Link></h4></h4>
+                                        <h4 className="card-title"><Link className='text-decoration-none text-primary' to={`/category/${category.title}/${category.id}`}>{category.title}</Link></h4>
                                         <h5 className="card-title text-muted">Desc: {category.detail}</h5>
                                     </div>
                                     <div className="card-footer">

@@ -157,7 +157,7 @@ function SingleProduct(props) {
                 <div className="card">
                     <Link to={`/product/${props.product.slug}/${props.product.id}`}><img src={props.product.image} className="card-img-top" style={imgStyle} alt="..." /></Link>
                     <div className="card-body">
-                        <Link to={`/product/${props.product.slug}/${props.product.id}`}><h4 className="card-title">{props.product.title}</h4></Link>
+                        <Link className='text-decoration-none text-primary' to={`/product/${props.product.slug}/${props.product.id}`}><h4 className="card-title">{props.product.title}</h4></Link>
                         {
                             CurrencyData != 'usd' && <h5 className="card-title text-muted">Price : Rs. {props.product.price}</h5>
                         }
