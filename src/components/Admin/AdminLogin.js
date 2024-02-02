@@ -1,12 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useState} from 'react';
 import { Form, Button, Alert } from "react-bootstrap";
 import axios from 'axios';
 import "../login.css";
 import BackgroundImage from "../assets/images/background.png";
 import Logo from "../assets/images/logo.png";
+import { useNavigate } from 'react-router-dom';
 
 function AdminLogin() {
     const baseUrl = 'http://127.0.0.1:8000/api';
+    const navigate = useNavigate();
     const [show, setShow] = useState(false);
     const [formError, setFormError] = useState(false);
     const [errorMsg, seterrorMsg] = useState('');
@@ -51,7 +53,8 @@ function AdminLogin() {
     };
     const checkAdmin = localStorage.getItem('owner_login');
     if (checkAdmin) {
-        window.location.href = '/admin/dashboard';
+        // window.location.href = '/admin/dashboard';
+        navigate('/admin/dashboard')
     }
 
     const buttonEnable = (loginFormData.username != '') && (loginFormData.password != '')

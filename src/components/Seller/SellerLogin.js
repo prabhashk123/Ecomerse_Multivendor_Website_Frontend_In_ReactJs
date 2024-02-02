@@ -1,5 +1,5 @@
 import { useState} from 'react';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import { Form, Button, Alert } from "react-bootstrap";
 import axios from 'axios';
 import "../login.css";
@@ -9,6 +9,7 @@ import Logo from "../assets/images/logo.png";
 function SellerLogin() {
     const baseUrl = 'http://127.0.0.1:8000/api';
     const [show, setShow] = useState(false);
+    const navigate = useNavigate();
     const [formError, setFormError] = useState(false);
     const [errorMsg, seterrorMsg] = useState('');
     const [loginFormData, setloginFormData] = useState({
@@ -42,7 +43,6 @@ function SellerLogin() {
                     localStorage.setItem('vendor_id', response.data.id);
                     localStorage.setItem('vendor_login', true);
                     localStorage.setItem('vendor_username', response.data.user);
-                    // localStorage.setItem('first_name', response.data.user.first_name);
                     setFormError(false);
                     seterrorMsg('');
                 }
@@ -54,7 +54,8 @@ function SellerLogin() {
     // console.log(localStorage.getItem('vendor_login'))
     const checkVendor = localStorage.getItem('vendor_login');
     if (checkVendor) {
-        window.location.href = '/seller/dashboard';
+        // window.location.href = '/seller/dashboard';
+        navigate('/seller/dashboard')
     }
 
     const buttonEnable = (loginFormData.username != '') && (loginFormData.password != '')

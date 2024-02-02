@@ -1,7 +1,7 @@
 import { useState} from 'react';
 import { Form, Button, Alert } from "react-bootstrap";
 import "../login.css";
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 // for connect to django php react like axios for http client
 import axios from 'axios';
 import BackgroundImage from "../assets/images/background.png";
@@ -9,6 +9,7 @@ import Logo from "../assets/images/logo.png";
 
 function Login(props) {
     const baseUrl = 'http://127.0.0.1:8000/api';
+    const navigate = useNavigate();
     const [show, setShow] = useState(false);
     const [formError, setFormError] = useState(false);
     const [errorMsg, seterrorMsg] = useState('');
@@ -56,7 +57,8 @@ function Login(props) {
     
     const checkCustomer=localStorage.getItem('customer_login');
     if(checkCustomer){
-        window.location.href='/customer/dashboard';
+        // window.location.href='/customer/dashboard';
+        navigate('/customer/dashboard')
     }
     
     const buttonEnable =(loginFormData.username!='') && (loginFormData.password!='')
