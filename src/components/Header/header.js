@@ -16,12 +16,14 @@ function Header(props) {
     'search': ""
   });
   
-
   // For seller/vendor Panel
   const checkVendor = localStorage.getItem('vendor_login');
-  // const vendor_username = localStorage.getItem('vendor_username');
+  const vendor_username = localStorage.getItem('vendor_username');
+  // customer panel
+  const customer_username = localStorage.getItem('customer_username');
   // for Admin Panel
   const checkAdmin = localStorage.getItem('owner_login');
+  const owner_username = localStorage.getItem('owner_username');
   // Conditions for Cart
   if (cartData == null) {
     var cartItems = 0;
@@ -149,18 +151,9 @@ function Header(props) {
                 <Link className="nav-link text-light" to="/checkout">New Order(5)</Link>
               </li>
               {/* Seller/Vendor pannel */}
-
-              {/* {
-                vendor_username &&
-                 <NavDropdown title={vendor_username} id="nav-dropdown">
-                  
-              }
               {
-                !vendor_username && 
-                 <NavDropdown title='Vendor Panel' id="nav-dropdown">
-              } */}
-              <NavDropdown title='Vendor Panel' id="nav-dropdown">
-                {/* <NavDropdown  title={vendor_username} id="nav-dropdown"> */}
+                vendor_username ?
+                 <NavDropdown title={vendor_username} id="nav-dropdown">
                 {
                   checkVendor &&
                   <>
@@ -176,9 +169,28 @@ function Header(props) {
                     <NavDropdown.Divider />
                   </>
                 }
-              </NavDropdown>
+              </NavDropdown> :
+               <NavDropdown title='Vendor Panel' id="nav-dropdown">
+              {
+                checkVendor &&
+                <>
+                  <NavDropdown.Item eventKey="4.1"><Link className='text-decoration-none' to='/seller/dashboard'>Dashboard</Link></NavDropdown.Item>
+                  <NavDropdown.Item eventKey="4.4"><Link className='text-decoration-none' to='/seller/logout'>LogOut</Link></NavDropdown.Item>
+                </>
+              }
+              {
+                !checkVendor &&
+                <>
+                  <NavDropdown.Item eventKey="4.2"><Link className='text-decoration-none' to='/seller/register'>Register</Link></NavDropdown.Item>
+                  <NavDropdown.Item eventKey="4.3"><Link className='text-decoration-none' to='/seller/login'>Login</Link></NavDropdown.Item>
+                  <NavDropdown.Divider />
+                </>
+              }
+            </NavDropdown>
+}          
               {/* Customer Pannel */}
-              <NavDropdown title="My Account" id="nav-dropdown">
+              { customer_username ?
+              <NavDropdown title={customer_username} id="nav-dropdown">
                 {userContext != 'true' &&
                   <>
                     <NavDropdown.Item eventKey="4.2"><Link className='text-decoration-none' to='/customer/register'>Register</Link></NavDropdown.Item>
@@ -192,25 +204,30 @@ function Header(props) {
                     <NavDropdown.Item eventKey="4.4"><Link className='text-decoration-none' to='/customer/logout'>LogOut</Link></NavDropdown.Item>
                   </>
                 }
-              </NavDropdown>
+              </NavDropdown>:
+              <NavDropdown title="Account" id="nav-dropdown"></NavDropdown>
+}
               {/* Admin Pannel */}
-              <NavDropdown title="Admin Panel" id="nav-dropdown">
+              {
+                owner_username ?
+              <NavDropdown title={owner_username} id="nav-dropdown">
                 {
-                  checkAdmin &&
+                  checkAdmin ?
                   <>
                     <NavDropdown.Item eventKey="4.1"><Link className='text-decoration-none' to='/admin/dashboard'>Dashboard</Link></NavDropdown.Item>
                     <NavDropdown.Item eventKey="4.3"><Link className='text-decoration-none' to='/owner/about'>About Us</Link></NavDropdown.Item>
                     <NavDropdown.Item eventKey="4.4"><Link className='text-decoration-none' to='/admin/logout'>LogOut</Link></NavDropdown.Item>
                   </>
-                }
-                {
-                  !checkAdmin &&
+                  // '?' means if  and ':' means else and '&&' this means only a particular statement is shown
+                :
                   <>
                     <NavDropdown.Item eventKey="4.3"><Link className='text-decoration-none' to='/admin/login'>Login</Link></NavDropdown.Item>
                   </>
                 }
                 <NavDropdown.Divider />
-              </NavDropdown>
+              </NavDropdown>:
+              <NavDropdown title="Admin Panel" id="nav-dropdown"></NavDropdown>
+}
               {/* Admin Pannel end */}
               <li className="nav-item">
                 <span className="nav-link text-dark">
