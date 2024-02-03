@@ -8,16 +8,17 @@ import { useState, useEffect } from 'react';
 function SellerProducts() {
     const baseUrl = 'http://127.0.0.1:8000/api';
     const [ProductData, setProductData] = useState([]);
+    const vendor_id = localStorage.getItem('vendor_id')
 
     useEffect(() => {
-        fetchdata(baseUrl + '/products/');
+        fetchdata(baseUrl + '/vendor-products/' + vendor_id + '/');
     }, []);
 
     function fetchdata(baseUrl) {
         fetch(baseUrl)
             .then((response) => response.json())
             .then((data) => {
-                setProductData(data.results);
+                setProductData(data);
                 // console.log(data);
             });
     }
@@ -31,7 +32,7 @@ function SellerProducts() {
             })
                 .then((response) => {
                     if (response.status == 204) {
-                        fetchdata(baseUrl + '/products/');
+                        fetchdata(baseUrl + '/vendor-products/' + vendor_id + '/');
                     }
 
                 });
@@ -73,7 +74,7 @@ function SellerProducts() {
 
                                                 <td>
                                                     <Link to={`/seller/update-product/${product.id}`}>
-                                                        <img src={product.image} className="img-thumbnail" width='80' alt="..." />
+                                                        <img src={`http://127.0.0.1:8000/${product.image}`} className="img-thumbnail" width='80' alt="..." />
                                                     </Link>
                                                     <Link className='text-decoration-none' to={`/seller/update-product/${product.id}`}>{product.title}</Link>
                                                 </td>

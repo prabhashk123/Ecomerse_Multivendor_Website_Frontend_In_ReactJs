@@ -1,33 +1,42 @@
 import AdminSidebar from './AdminSidebar';
 import { Link } from 'react-router-dom';
 import { useState,useEffect } from 'react';
+import axios from 'axios';
 
 function AdminDashboard() {
-    // const baseUrl = 'http://127.0.0.1:8000/api';
-    // var owner_id = localStorage.getItem('owner_id');
-    // const [AdminData, setAdminData] = useState({
-    //     'totalOrders': 0,
-    //     'totalProducts': 0,
-    //     'totalCustomers': 0,
-    // });
-    // without useeffect its render multiple time repeat infinite loop
-    // useEffect(() => {
-    //     fetchdata(baseUrl + '/owner/'+ owner_id +'/dashboard/');
-    // }, []);
-
-    // function fetchdata(baseUrl) {
-    //     fetch(baseUrl)
-    //         .then((response) => response.json())
-    //         .then((data) => {
-    //             console.log(data);
-    //             setAdminData({
-    //                 'totalOrders': data.totalOrders,
-    //                 'totalProducts': data.totalProducts,
-    //                 'totalCustomers': data.totalCustomers,
-    //             });
-    //         });
-    // }
-
+    const baseUrl = 'http://127.0.0.1:8000/api';
+    const[allProductData,setallProductData]=useState([])
+    const[allCustomerData,setallCustomerData]=useState([])
+    const[allOrderData,setallOrderData]=useState([])
+    useEffect(()=>{
+        fetchallorders(baseUrl+'/orders/');
+        fetchallproducts(baseUrl+'/products');
+        fetchallcustomers(baseUrl+'/customers');
+    },[]);
+    // for products
+    function fetchallproducts(baseUrl) {
+        fetch(baseUrl)
+            .then((response) => response.json())
+            .then((data) => {
+                setallProductData(data.results);
+            });
+    };
+     // for orders
+     function fetchallorders(baseUrl) {
+        fetch(baseUrl)
+            .then((response) => response.json())
+            .then((data) => {
+                setallOrderData(data);
+            });
+    };
+    // for customers
+    function fetchallcustomers(baseUrl) {
+        fetch(baseUrl)
+            .then((response) => response.json())
+            .then((data) => {
+                setallCustomerData(data);
+            });
+    };
     return (
         <>
         <div className='container mt-3'>
@@ -41,7 +50,7 @@ function AdminDashboard() {
                             <div className='card'>
                                 <div className='card-body text-center'>
                                     <h4>Total Products</h4>
-                                    <h4><Link to='/seller/products/'>6</Link></h4>
+                                    <h4><Link to='/admin/allvendorproducts/'>{allProductData.length}</Link></h4>
                                 </div>
                             </div>
                         </div>
@@ -49,7 +58,7 @@ function AdminDashboard() {
                             <div className='card'>
                                 <div className='card-body text-center'>
                                     <h4>Total Orders</h4>
-                                    <h4><Link to='/seller/vendoroders/'>5</Link></h4>
+                                    <h4><Link to='/admin/allcustomersorders'>{allOrderData.length}</Link></h4>
                                 </div>
                             </div>
                         </div>
@@ -57,7 +66,7 @@ function AdminDashboard() {
                             <div className='card'>
                                 <div className='card-body text-center'>
                                     <h4>Total Customers</h4>
-                                    <h4><Link to='/seller/customers/'>7</Link></h4>
+                                    <h4><Link to='/admin/allcustomers/'>{allCustomerData.length}</Link></h4>
                                 </div>
                             </div>
                         </div>
