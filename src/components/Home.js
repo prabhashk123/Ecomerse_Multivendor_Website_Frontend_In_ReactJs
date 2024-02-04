@@ -10,7 +10,7 @@ import SquareImageSlider from './Admin/SinglieCategorySlider';
 
 function Home(props) {
     const baseUrl = 'http://127.0.0.1:8000/api';
-    const baseImgUrl='http://127.0.0.1:8000';
+    const baseImgUrl = 'http://127.0.0.1:8000';
     const [products, setProducts] = useState([]);
     // const [ReviewsList, setReviewsList] = useState([]);
     const [VendorList, setVendorList] = useState([]);
@@ -88,9 +88,12 @@ function Home(props) {
                     <h3 className="mb-2">Latest Products<Link className='float-end btn btn-dark' to="/products">View all Latest Products
                         <i class="fa-solid fa-arrow-right-long"></i></Link></h3>
                     <div className="row">
-                        {
+                        {/* {
                             products.map((product, index) => <SingleProduct key={index} product={product} />)
-                        }
+                        } */}
+                        {products.filter(product => product.publish_status === true).map((product, index) => (
+                            <SingleProduct key={index} product={product} />
+                        ))}
                     </div>
                     {/* Latest Product end */}
 
@@ -141,7 +144,7 @@ function Home(props) {
                     {/* Carousel for Rating and Reviews */}
                     <div className="container carousel slide my-4 border bg-dark text-white p-5" data-bs-ride="true">
                         <div className='row'>
-                            <Testimonial/>
+                            <Testimonial />
                         </div>
                     </div>
                     {/* Carousel for Rating and Reviews end */}

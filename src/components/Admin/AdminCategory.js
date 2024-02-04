@@ -7,10 +7,10 @@ import { useState, useEffect } from 'react';
 
 function AdminCategory() {
     const baseUrl = 'http://127.0.0.1:8000/api';
-    const [CategoryData,setCategoryData] = useState([]);
+    const [CategoryData, setCategoryData] = useState([]);
 
     useEffect(() => {
-        fetchdata(baseUrl+'/categories/')
+        fetchdata(baseUrl + '/categories/')
     }, []);
 
     function fetchdata(baseUrl) {
@@ -31,7 +31,7 @@ function AdminCategory() {
             })
                 .then((response) => {
                     if (response.status == 204) {
-                        fetchdata(baseUrl+'/categories/')
+                        fetchdata(baseUrl + '/categories/')
                     }
 
                 });
@@ -45,7 +45,6 @@ function AdminCategory() {
                         <AdminSidebar />
                     </div>
                     <div className='col-md-9 col-12 mb-2 mt-3'>
-                        {/* <h3><Link to='/seller/addproduct' className='btn btn-primary mb-2 float-end'><i className='fa fa-plus-circle'></i> Add Product</Link></h3> */}
                         <div className='table-responsive'>
                             <table className='table table-bordered'>
                                 <thead>
@@ -55,6 +54,7 @@ function AdminCategory() {
                                         </td>
                                     </tr>
                                     <tr>
+                                        <th>Sl No.</th>
                                         <th>Cat_Id</th>
                                         <th>Category</th>
                                         <th>Detail</th>
@@ -65,18 +65,16 @@ function AdminCategory() {
                                     {
                                         CategoryData.map((category, index) => {
                                             return <tr>
+                                                <td>{index + 1}</td>
                                                 <td>{category.id}</td>
-                                                <td><Link className='text-decoration-none' to={`/seller/update-category/${category.id}`}>{category.title}</Link></td>
+                                                <td>
+                                                    <Link to={`/admin/update-category/${category.id}`}>
+                                                        <img src={`http://127.0.0.1:8000/${category.cat_img}`} className="img-thumbnail" width='80' alt="..." />
+                                                    </Link>
+                                                    <Link className='text-decoration-none' to={`/admin/update-category/${category.id}`}>{category.title}</Link>
+                                                </td>
                                                 <td>{category.detail}</td>
-                                                {/* <td>
-                                                    {
-                                                        !product.publish_status && <span className='text-danger'>Pending</span>
-                                                    }
-                                                    {
-                                                        product.publish_status && <span className='text-success'>Published</span>
-                                                    }
-                                                </td> */}
-                                                <td width='28%'>
+                                                <td width='26%'>
                                                     <Link to='/categories' className='btn btn-info'>View</Link>
                                                     <Link to={`/admin/update-category/${category.id}`} className='btn btn-primary ms-1'>Edit</Link>
                                                     <button type='button' onClick={() => showConfirm(category.id)} className='btn btn-danger ms-1'>Delete</button>

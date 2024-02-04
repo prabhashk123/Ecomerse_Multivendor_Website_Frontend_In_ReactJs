@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 function AllProducts() {
-    
+
     // demo data
     // const products = [
     //     {
@@ -22,9 +22,9 @@ function AllProducts() {
     //     },
     // ]
     // Dynamic data fetch
-    
+
     // whole url pass in baseUrl
-    const baseUrl='http://127.0.0.1:8000/api';
+    const baseUrl = 'http://127.0.0.1:8000/api';
     // product backend
     const [Products, setProducts] = useState([]);
     // Pagination
@@ -38,11 +38,10 @@ function AllProducts() {
     // });
     // best use this
     //    Before rendering useeffect data
-    // for currency
-       
+
     useEffect(() => {
-        fetchdata(baseUrl+'/products');
-    },[]);
+        fetchdata(baseUrl + '/products');
+    }, []);
 
     function fetchdata(baseUrl) {
         fetch(baseUrl)
@@ -55,44 +54,33 @@ function AllProducts() {
 
     // create link for pagination 
     var links = [];
-    var limit=1;
-    var totalLinks=totalResult/limit;
+    var limit = 1;
+    var totalLinks = totalResult / limit;
     for (let i = 1; i <= totalLinks; i++) {
-        links.push(<li className="page-item"><Link className="page-link" onClick={()=>changeUrl(baseUrl+`/products/?page=${i}`)} to={`/products/?page=${i}`}>{i}</Link></li>)
+        links.push(<li className="page-item"><Link className="page-link" onClick={() => changeUrl(baseUrl + `/products/?page=${i}`)} to={`/products/?page=${i}`}>{i}</Link></li>)
     };
-
 
     function changeUrl(baseUrl) {
         // console.log(baseUrl);
         // setbaseUrl(baseUrl);
         fetchdata(baseUrl);
-
     };
-
-    // .catch((err)=>console.log(err))
-    // fetch('https://jsonplaceholder.typicode.com/todos/1')
-    //     .then(response => response.json())
-    //     .then(json => console.log(json))
+    
     return (
         <section className='container'>
-            <br/>
+            <br />
             <h3 className="mb-2 mt-5">All Products</h3>
             <div className="row mt-2">
                 {/* Product box */}
-                {/* map basicalliy iterate the data */}
+                {/* map basicalliy iterate(loop) the data */}
                 {/* Send single object */}
-                {/* {
-                products.map((product)=><SingleProduct title={product.title}/>)
-                } */}
-                {/* send mutiple object */}
-                {
-                    Products.map((product, index) => <SingleProduct key={index} product={product} />)
-                }
+                {Products.filter(product => product.publish_status === true).map((product, index) => (
+                    <SingleProduct key={index} product={product} />
+                ))}
                 {/* Product box  end*/}
             </div>
             {/* Pagination */}
             <nav aria-label="Page navigation example">
-                {/*print {totalResult} */}
                 <ul className="pagination">
                     <li className="page-item">
                         <Link className="page-link" href="#" aria-label="Previous">
@@ -109,7 +97,7 @@ function AllProducts() {
             </nav>
             {/* Pagination end */}
         </section>
-   
+
 
     );
 }
