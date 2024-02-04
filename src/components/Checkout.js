@@ -109,9 +109,8 @@ function Checkout() {
                                         </tr>
                                         <tr>
                                             <td colSpan='4' align='center'>
-                                                <Link to='/categories' className='btn btn-primary mt-2 border-solid'>Continue Shopping</Link>
+                                                <Link to='/' className='btn btn-primary mt-2 border-solid'>Continue Shopping</Link>
                                                 <Link to='/confirm-order' className='btn btn-success mt-2 ms-1 broder-solid'>Proceed</Link>
-                                                {/* <p onClick="ConfirmOrder()">clicks</p> */}
                                             </td>
                                         </tr>
                                     </tfoot>
@@ -123,7 +122,7 @@ function Checkout() {
                 {cartItems == 0 &&
                     <>
                         <p>Your CartItems is Empty! Please Go On Click Continue Shopping Thane Add to Cart Your Products.Thank You. </p>
-                        <Link to='/categories' className='btn btn-primary mt-2 border-solid'>Continue Shopping</Link>
+                        <Link to='/' className='btn btn-primary mt-2 border-solid'>Continue Shopping</Link>
                     </>
                 }
             </div>

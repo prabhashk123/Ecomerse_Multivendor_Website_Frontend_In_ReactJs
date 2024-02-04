@@ -161,6 +161,19 @@ function ProductDetail() {
                 console.log(error);
             });
     }
+    //  // function for total price
+    // var sum = 0;
+    // // if (cartItems > 0) {
+    //     // productData.map((item, index) => {
+    //         if (CurrencyData == 'inr' || CurrencyData == undefined) {
+    //             sum += parseFloat(productData.price);
+
+    //         } else if (CurrencyData == 'usd') {
+    //             sum += parseFloat(productData.usd_price);
+    //         }
+
+    //     // });
+    // // }
 
     return (
         <section className="container">
@@ -212,6 +225,7 @@ function ProductDetail() {
                                 <button type='button' onClick={cartRemoveButtonHandler} title='Remove to Cart' className='btn btn-secondary ms-1'><i className="fa-solid fa-cart-plus fa-1x"></i> Remove to Cart</button>
                             </>
                         }
+                        {/* <Link title='Buy Now' to='/confirm-order' className='btn btn-warning ms-1'><i className="fa-solid fa-bag-shopping"></i>Buy Now</Link> */}
                         <button title='Buy Now' className='btn btn-warning ms-1'><i className="fa-solid fa-bag-shopping"></i> Buy Now</button>
                         {
                             (userContext && !ProductInWishlist) && <button onClick={saveInWishList} title='Add to Wishlist' className='btn btn-danger ms-1'><i className="fa fa-heart fa-1x"></i> Wishlist</button>

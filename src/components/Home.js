@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import SingleProduct from './SingleProduct';
 // For testimonial rating and reviews
 import Testimonial from './Testimonial';
-import { Carousel } from 'react-bootstrap';
 import SingleSeller from './Seller/SingleSeller';
 // for category slider
 import SquareImageSlider from './Admin/SinglieCategorySlider';
@@ -19,14 +18,14 @@ function Home(props) {
     const [PopularCategoryList, setPopularCategoryList] = useState([])
     useEffect(() => {
         // but needs four products so set limits
-        fetchdata(baseUrl + '/products/?fetch_limit=4');
+        fetchProductdata(baseUrl + '/products/?fetch_limit=4');
         // fetchTestimonialData(baseUrl + '/productrating/');
         fetchPopulerVendors(baseUrl + '/vendors/?fetch_limit=4');
         fetchPopulerProducts(baseUrl + '/products/?fetch_popular_products_limit=4');
         fetchPopulerCategories(baseUrl + '/categories/?fetch_popular_category_limit=4');
     }, []);
 
-    function fetchdata(baseUrl) {
+    function fetchProductdata(baseUrl) {
         fetch(baseUrl)
             .then((response) => response.json())
             .then((data) => {

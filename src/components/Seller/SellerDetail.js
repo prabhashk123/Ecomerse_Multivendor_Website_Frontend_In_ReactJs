@@ -1,19 +1,18 @@
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import SingleProduct from '../SingleProduct';
-// For carousel
-import Carousel from 'react-bootstrap/Carousel';
 import { useParams } from 'react-router-dom';
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect} from 'react';
 // context api
 // import { UserContext, CurrencyContext } from './Context';
 
 function SellerDetail() {
     // whole url pass in baseUrl
     const baseUrl = 'http://127.0.0.1:8000/api';
+    const {seller_username,seller_id } = useParams();
     // product backend
     const [ProductList, setProductList] = useState([]);
-    // dict define for undefine data
+    //vendordictdefine for undefine data
     const [VendorData, setVendorData] = useState({
         'profile_img': '',
         'user': {
@@ -23,12 +22,7 @@ function SellerDetail() {
             'total_products': 0
         }
     });
-    const { seller_username, seller_id } = useParams();
-    // const { CurrencyData } = useContext(CurrencyContext);
-    // const userContext = useContext(UserContext);
-    // // Use for wishList at login
-    // const [ProductInWishlist, setProductInWishlist] = useState(false);
-
+  
     useEffect(() => {
         fetchProductdata(baseUrl + '/vendor-products/' + seller_id);
         fetchVendorctdata(baseUrl + '/vendor/' + seller_id);
@@ -38,7 +32,7 @@ function SellerDetail() {
         fetch(baseUrl)
             .then((response) => response.json())
             .then((data) => {
-                setProductList(data);
+                setProductList(data);               
             });
     }
     function fetchVendorctdata(baseUrl) {
@@ -48,7 +42,7 @@ function SellerDetail() {
                 setVendorData(data);
             });
     }
-    console.log(VendorData);
+    // console.log(VendorData);
     return (
         <section className="container mt-4">
             <br />
