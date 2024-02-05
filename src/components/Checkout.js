@@ -1,12 +1,15 @@
 // Package
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+// for coupan
+import Form from 'react-bootstrap/Form';
+import { useState, useEffect } from 'react';
 // context
 import { useContext } from 'react';
 import { CartContext, CurrencyContext } from './Context';
 
 function Checkout() {
-    const [productData, setProductData] = useState([]);
+    const baseUrl = 'http://127.0.0.1:8000/api';
+    const [allCoupanList, setallCoupanList] = useState([])
     const [cartButtonClickStatus, setcartButtonClickStatus] = useState([false]);
     const { cartData, setCartData } = useContext(CartContext);
     const { CurrencyData } = useContext(CurrencyContext);
@@ -30,8 +33,20 @@ function Checkout() {
 
         });
     }
+    // for coupan
+    useEffect(() => {
+        fetchdata(baseUrl + '/coupan/');
+    }, []);
+    // fetch all coupan list
+    function fetchdata(baseUrl) {
+        fetch(baseUrl)
+            .then((response) => response.json())
+            .then((data) => {
+                setallCoupanList(data);
+            });
+    }
 
-    // for remove
+    // for remove item from cart
     const cartRemoveButtonHandler = (product_id) => {
         var previousCart = localStorage.getItem('cartData');
         var cartJson = JSON.parse(previousCart);
@@ -46,7 +61,6 @@ function Checkout() {
         setcartButtonClickStatus(false)
         setCartData(cartJson)
     }
-
 
     return (
         <>
@@ -71,8 +85,8 @@ function Checkout() {
                                                 return (
                                                     <tr>
                                                         <td>{index + 1}</td>
-                                                        <td><Link><img src={item.product.image} className="img-thumbnail" width='80' alt="..." /></Link>
-                                                            <p><Link>{item.product.title}</Link></p>
+                                                        <td><Link to={`/product/${item.product.slug}/${item.product.id}`}><img src={item.product.image} className="img-thumbnail" width='80' alt="..." /></Link>
+                                                            <p><Link to={`/product/${item.product.slug}/${item.product.id}`} className='text-decoration-none'>{item.product.title}</Link></p>
                                                         </td>
                                                         {
                                                             (CurrencyData == 'inr' || CurrencyData == undefined) && <td>Rs. {item.product.price}</td>
@@ -98,13 +112,24 @@ function Checkout() {
                                     <tfoot>
                                         <tr>
                                             <th>Coupans</th>
-                                            <td>Select code</td>
-                                            <td>Rs -100</td>
-                                            <th><button type='button' className='btn text-white btn-sm btn-success btn-outline-none'>Apply</button></th>
-
+                                            <th style={{ width: 210 }}>
+                                                <Form className='text-light'>
+                                                    <Form.Group controlId="formBasicEmail">
+                                                        <Form.Select name='code' onChange={inputHandler} aria-label="Default select example">
+                                                            <option selected>Select Coupan code</option>
+                                                            {
+                                                                allCoupanList.map((item, index) => <option selected={item.id == allCoupanList.code} value={item.id}>{item.code}</option>)
+                                                            }
+                                                            <Form.Control type="select" id='code' />
+                                                        </Form.Select>
+                                                    </Form.Group>
+                                                </Form>
+                                            </th>
+                                            <td>Rs.-100</td>
+                                            <th><button type='button' className='btn text-white btn-sm btn-success btn-outline-none'>Apply Coupan</button></th>
                                         </tr>
                                         <tr>
-                                            <th>Total Items<span className='text-success'> ({ cartData.length})</span></th>
+                                            <th>Total Items<span className='text-success'> ({cartData.length})</span></th>
                                             <th>Total Price</th>
                                             {
                                                 (CurrencyData == 'inr' || CurrencyData == undefined) && <th>Rs. {sum}</th>
@@ -112,7 +137,7 @@ function Checkout() {
                                             {
                                                 CurrencyData == 'usd' && <th>$ {sum}</th>
                                             }
-                                            <th><Link to='/products' className='btn btn-sm btn-primary'>Add more items</Link></th>
+                                            <th><Link to='/products' className='btn btn-sm btn-primary'><i className='fa fa-plus-circle'></i> Add more items</Link></th>
                                         </tr>
                                         <tr>
                                             <td colSpan='4' align='center'>

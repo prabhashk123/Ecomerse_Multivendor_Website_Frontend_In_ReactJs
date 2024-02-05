@@ -151,7 +151,7 @@ function AllCoupanlist() {
                                 </select>
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                                <Form.Label htmlFor='discount_value'>discount_value</Form.Label>
+                                <Form.Label htmlFor='discount_value'>Discount Value</Form.Label>
                                 <Form.Control name='discount_value' onChange={inputHandler} value={addCoupanData.discount_value} type="number" id='discount_value' />
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="formBasicPassword">
