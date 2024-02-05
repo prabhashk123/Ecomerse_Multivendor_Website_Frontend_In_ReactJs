@@ -15,11 +15,11 @@ function OrderRows(props) {
         // send data to server
         const formData = new FormData();
         formData.append('product_id', product_id)
-        console.log(formData)
+        // console.log(formData)
         // submit data form
-        axios.post(baseApiUrl + '/update_product_download_count/' + product_id +'/')
+        axios.post(baseApiUrl + '/update_product_download_count/' + product_id + '/')
             .then(function (response) {
-                console.log(response.data);
+                // console.log(response.data);
                 if (response.data.bool == true) {
                     settotalDownloads(++item.product.downloads);
                     window.open(
@@ -35,9 +35,24 @@ function OrderRows(props) {
 
     }
 
+    // For customer delete order
+    function showConfirm(order_id) {
+        var _confirm = window.confirm("Are you sure you want to delete this order!?")
+        if (_confirm) {
+            fetch(baseApiUrl + '/delete-customer-order/' + order_id, {
+                method: 'DELETE'
+            })
+                .then((response) => {
+                    if (response.bool == true) {
+
+                    }
+                });
+        }
+    }
+
     return (
         <tr>
-            <td>{index+1}</td>
+            <td>{index + 1}</td>
             <td>{item.order.id}</td>
             <td>{item.id}</td>
             <td>
@@ -62,6 +77,7 @@ function OrderRows(props) {
                 {
                     item.order.order_status == true && <Link className='btn btn-success btn-sm ms-1 my-1' to={`/customer/add-review/${item.product.id}`}>Add Review</Link>
                 }
+                <button type='button' onClick={() => showConfirm(item.order.id)} className='btn btn-danger ms-1 my-1 btn-sm'>Delete</button>
             </td>
         </tr>
 

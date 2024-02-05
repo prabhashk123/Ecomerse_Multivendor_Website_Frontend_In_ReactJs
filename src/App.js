@@ -51,6 +51,8 @@ import AboutUs from './components/Admin/AboutUs';
 import AdminLogin from './components/Admin/AdminLogin';
 import AdminLogout from './components/Admin/AdminLogout';
 import AdminCategory from './components/Admin/AdminCategory';
+import AllCoupanlist from './components/Admin/Coupan';
+import UpdateCoupanlist from './components/Admin/UpdateCoupan';
 import AddCategory from './components/Admin/AddCategory';
 import UpdateCategory from './components/Admin/UpdateCategory';
 import AllVendorProducts from './components/Admin/AllVendorProducts';
@@ -103,6 +105,8 @@ function App() {
           <Route path='/admin/logout' element={<AdminLogout />} />
           <Route path='/admin/category' element={<AdminCategory />} />
           <Route path='/admin/addcategory' element={<AddCategory />} />
+          <Route path='/admin/coupan' element={<AllCoupanlist />} />
+          <Route path='/admin/update-coupan/:coupan_id' element={<UpdateCoupanlist />} />
           <Route path='/admin/update-category/:category_id' element={<UpdateCategory />} />
           <Route path='admin/allvendorproducts' element={<AllVendorProducts />} />
           <Route path='/admin/allcustomersorders' element={<AllCustomersOrders />} />

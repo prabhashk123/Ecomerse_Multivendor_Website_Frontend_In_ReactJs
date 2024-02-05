@@ -84,7 +84,7 @@ function Checkout() {
                                                         <td>
 
                                                             <button type='button' onClick={() =>
-                                                                cartRemoveButtonHandler(item.product.id)} title='Remove to Cart' className='btn btn-primary ms-1'><i className="fa-solid fa-cart-plus fa-1x"></i> Remove to Cart</button>
+                                                                cartRemoveButtonHandler(item.product.id)} title='Remove to Cart' className='btn btn-danger ms-1'><i className="fa-solid fa-cart-plus fa-1x"></i> Remove to Cart</button>
 
                                                         </td>
                                                     </tr>
@@ -97,7 +97,14 @@ function Checkout() {
                                     </tbody>
                                     <tfoot>
                                         <tr>
-                                            <th>Total Items</th>
+                                            <th>Coupans</th>
+                                            <td>Select code</td>
+                                            <td>Rs -100</td>
+                                            <th><button type='button' className='btn text-white btn-sm btn-success btn-outline-none'>Apply</button></th>
+
+                                        </tr>
+                                        <tr>
+                                            <th>Total Items<span className='text-success'> ({ cartData.length})</span></th>
                                             <th>Total Price</th>
                                             {
                                                 (CurrencyData == 'inr' || CurrencyData == undefined) && <th>Rs. {sum}</th>
@@ -105,7 +112,7 @@ function Checkout() {
                                             {
                                                 CurrencyData == 'usd' && <th>$ {sum}</th>
                                             }
-                                            <th>Add More Items</th>
+                                            <th><Link to='/products' className='btn btn-sm btn-primary'>Add more items</Link></th>
                                         </tr>
                                         <tr>
                                             <td colSpan='4' align='center'>

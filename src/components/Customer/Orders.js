@@ -3,15 +3,13 @@ import Sidebar from './Sidebar';
 import { useState, useEffect } from 'react';
 import OrderRows from '../OrderRow';
 
-
 function Oders() {
     const baseUrl = 'http://127.0.0.1:8000/api';
-    const customer_d = localStorage.getItem('customer_id');
+    const customer_id = localStorage.getItem('customer_id');
     const [OrderItems, setOrderItems] = useState([]);
 
-
     useEffect(() => {
-        fetchdata(baseUrl + '/customer/' + customer_d + '/orderitems/');
+        fetchdata(baseUrl + '/customer/' + customer_id + '/orderitems/');
     }, []);
 
     function fetchdata(baseUrl) {
