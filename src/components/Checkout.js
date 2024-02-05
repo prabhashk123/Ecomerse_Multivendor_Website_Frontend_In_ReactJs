@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react';
 import { useContext } from 'react';
 import { CartContext, CurrencyContext } from './Context';
 
+
 function Checkout() {
     const baseUrl = 'http://127.0.0.1:8000/api';
     const [allCoupanList, setallCoupanList] = useState([])
@@ -34,6 +35,8 @@ function Checkout() {
         });
     }
     // for coupan
+    const inputHandler = (event) => {
+    };
     useEffect(() => {
         fetchdata(baseUrl + '/coupan/');
     }, []);
