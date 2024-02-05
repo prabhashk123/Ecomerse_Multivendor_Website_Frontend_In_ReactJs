@@ -43,6 +43,11 @@ function UpdateCoupanlist() {
     }
     // for update
     const UpdatesubmitHandler = () => {
+        if (updateCoupanData.start_date != '' && updateCoupanData.expire_date != '') {
+            setErrorMsg("Please select start date and expire date");
+            setSuccessMsg("");
+            return;
+        }
         // send data to server
         const formData = new FormData();
         formData.append('code', updateCoupanData.code);
@@ -54,17 +59,9 @@ function UpdateCoupanlist() {
         // submit data form
         axios.patch(baseUrl + '/coupan-modify/' + coupan_id + '/', formData)
             .then(function (response) {
-                if (response.status == 201) {
-                    setupdateCoupanData({
-                        'code': '',
-                        'discount_type': '',
-                        'discount_value': '',
-                        'minimum_order_value': '',
-                        'start_date': '',
-                        'expire_date': ''
-                    });
+                if (response.status == 200) {
                     setErrorMsg('');
-                    setSuccessMsg('coupan updated successfully!!');
+                    setSuccessMsg('Coupan updated successfully!!');
                 } else {
                     setSuccessMsg('');
                     setErrorMsg('Oops something went to wrong!!please try again later!!');
@@ -116,7 +113,7 @@ function UpdateCoupanlist() {
                                 <Form.Label htmlFor='expire_date'>Expire Date</Form.Label>
                                 <Form.Control name='expire_date' onChange={inputHandler} value={updateCoupanData.expire_date} type="datetime-local" id='expire_date' />
                             </Form.Group>
-                            <Button className='mb-2 mt-2 item-center' variant="primary" onClick={UpdatesubmitHandler} type="button">
+                            <Button className='mb-2 mt-1' variant="success" onClick={UpdatesubmitHandler} type="button">
                                 Update Coupan
                             </Button>
                         </Form>
