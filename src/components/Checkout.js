@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 // for coupan
 import Form from 'react-bootstrap/Form';
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 // context
 import { useContext } from 'react';
 import { CartContext, CurrencyContext } from './Context';
@@ -10,6 +11,9 @@ import { CartContext, CurrencyContext } from './Context';
 
 function Checkout() {
     const baseUrl = 'http://127.0.0.1:8000/api';
+    const [couponCode, setcouponCode] = useState([])
+    const [ErrorMsg, setErrorMsg] = useState('');
+    const [SuccessMsg, setSuccessMsg] = useState('');
     const [allCoupanList, setallCoupanList] = useState([])
     const [cartButtonClickStatus, setcartButtonClickStatus] = useState([false]);
     const { cartData, setCartData } = useContext(CartContext);
@@ -36,6 +40,10 @@ function Checkout() {
     }
     // for coupan
     const inputHandler = (event) => {
+        setcouponCode({
+            ...couponCode,
+            [event.target.name]: event.target.value
+        });
     };
     useEffect(() => {
         fetchdata(baseUrl + '/coupan/');
@@ -48,6 +56,28 @@ function Checkout() {
                 setallCoupanList(data);
             });
     }
+    const submitHandler = () => {
+        const couponData= new FormData();
+        couponData.append('code', couponCode.code);
+        
+        // submit data form
+        axios.post(baseUrl + '/apply-coupon/', couponData)
+            .then(function (response) {
+                if (response.status == 201) {
+                    setcouponCode({
+                        'code': '',                    
+                    });
+                    setErrorMsg('');
+                    setSuccessMsg('coupon applied succes!!');
+                } else {
+                    setSuccessMsg('');
+                    setErrorMsg('Oops something went to wrong!!please try again later!!');
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    };
 
     // for remove item from cart
     const cartRemoveButtonHandler = (product_id) => {
@@ -108,9 +138,7 @@ function Checkout() {
 
                                                 )
                                             })
-
                                         }
-
                                     </tbody>
                                     <tfoot>
                                         <tr>
@@ -121,15 +149,15 @@ function Checkout() {
                                                         <Form.Select name='code' onChange={inputHandler} aria-label="Default select example">
                                                             <option selected>Select Coupan code</option>
                                                             {
-                                                                allCoupanList.map((item, index) => <option selected={item.id == allCoupanList.code} value={item.id}>{item.code}</option>)
+                                                                allCoupanList.map((item, index) => <option key={index} selected={item.id == allCoupanList.code} value={item.code}>{item.code}</option>)
                                                             }
                                                             <Form.Control type="select" id='code' />
                                                         </Form.Select>
                                                     </Form.Group>
                                                 </Form>
                                             </th>
-                                            <td>Rs.-100</td>
-                                            <th><button type='button' className='btn text-white btn-sm btn-success btn-outline-none'>Apply Coupan</button></th>
+                                            <td>Discount:{sum}-{couponCode.discount_value}</td>
+                                            <th><button type='button' onClick={submitHandler} className='btn text-white btn-sm btn-success btn-outline-none'>Apply Coupan</button></th>
                                         </tr>
                                         <tr>
                                             <th>Total Items<span className='text-success'> ({cartData.length})</span></th>
