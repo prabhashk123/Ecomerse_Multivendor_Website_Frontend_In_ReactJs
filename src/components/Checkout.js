@@ -8,10 +8,10 @@ import axios from 'axios';
 import { useContext } from 'react';
 import { CartContext, CurrencyContext } from './Context';
 
-
 function Checkout() {
     const baseUrl = 'http://127.0.0.1:8000/api';
     const [couponCode, setcouponCode] = useState([])
+    const [discountValue, setdiscountValue] = useState('')
     const [ErrorMsg, setErrorMsg] = useState('');
     const [SuccessMsg, setSuccessMsg] = useState('');
     const [allCoupanList, setallCoupanList] = useState([])
@@ -25,7 +25,7 @@ function Checkout() {
     else {
         var cartItems = cartData.length;
     }
-    // function for total price
+    // function for total price without coupon
     var sum = 0;
     if (cartItems > 0) {
         cartData.map((item, index) => {
@@ -38,7 +38,7 @@ function Checkout() {
 
         });
     }
-    // for coupan
+    // for coupan function
     const inputHandler = (event) => {
         setcouponCode({
             ...couponCode,
@@ -56,29 +56,39 @@ function Checkout() {
                 setallCoupanList(data);
             });
     }
+    // submit coupon data send server
     const submitHandler = () => {
-        const couponData= new FormData();
+        if (couponCode.code == null) {
+            setErrorMsg("Please select your coupon code here.");
+            setSuccessMsg("");
+            return;
+        }
+        const couponData = new FormData();
         couponData.append('code', couponCode.code);
-        
         // submit data form
         axios.post(baseUrl + '/apply-coupon/', couponData)
             .then(function (response) {
-                if (response.status == 201) {
+                console.log(response)
+                if (response.data.discount) {
+                    const { discount_value } = response.data;
+                    setdiscountValue(discount_value)
                     setcouponCode({
-                        'code': '',                    
+                        'code': '',
                     });
                     setErrorMsg('');
-                    setSuccessMsg('coupon applied succes!!');
-                } else {
+                    setSuccessMsg('coupon applied successfully!!');
+                }
+                else {
                     setSuccessMsg('');
-                    setErrorMsg('Oops something went to wrong!!please try again later!!');
+                    setErrorMsg(response.data.error);
                 }
             })
             .catch(function (error) {
                 console.log(error);
             });
     };
-
+    // caculate total price if coupon exists
+    const total = sum - discountValue
     // for remove item from cart
     const cartRemoveButtonHandler = (product_id) => {
         var previousCart = localStorage.getItem('cartData');
@@ -97,8 +107,11 @@ function Checkout() {
 
     return (
         <>
-            <div className='container mt-4' >
+            <div className='container mt-5' >
+                <br />
                 <h3 className="mb-4">All Items({cartItems})</h3>
+                {SuccessMsg && <p className='container text-success'><strong>{SuccessMsg}</strong></p>}
+                {ErrorMsg && <p className='container text-danger'><strong>{ErrorMsg}</strong> </p>}
                 {cartItems != 0 &&
                     <div className='row'>
                         <div className='col-md-9 col-12'>
@@ -156,10 +169,17 @@ function Checkout() {
                                                     </Form.Group>
                                                 </Form>
                                             </th>
-                                            <td>Discount:{sum}-{couponCode.discount_value}</td>
+                                            <td>
+                                                {
+                                                    (CurrencyData == 'inr' || CurrencyData == undefined) && <td>Rs. - {discountValue}</td>
+                                                }
+                                                {
+                                                    CurrencyData == 'usd' && <td>$ - {discountValue}</td>
+                                                }
+                                            </td>
                                             <th><button type='button' onClick={submitHandler} className='btn text-white btn-sm btn-success btn-outline-none'>Apply Coupan</button></th>
                                         </tr>
-                                        <tr>
+                                        {/* <tr>
                                             <th>Total Items<span className='text-success'> ({cartData.length})</span></th>
                                             <th>Total Price</th>
                                             {
@@ -168,8 +188,37 @@ function Checkout() {
                                             {
                                                 CurrencyData == 'usd' && <th>$ {sum}</th>
                                             }
+
                                             <th><Link to='/products' className='btn btn-sm btn-primary'><i className='fa fa-plus-circle'></i> Add more items</Link></th>
-                                        </tr>
+                                        </tr> */}
+                                        {
+                                            !discountValue &&
+                                            <tr>
+                                                <th>Total Items<span className='text-success'> ({cartData.length})</span></th>
+                                                <th>Total Price</th>
+                                                {
+                                                    (CurrencyData == 'inr' || CurrencyData == undefined) && <th>Rs. {sum}</th>
+                                                }
+                                                {
+                                                    CurrencyData == 'usd' && <th>$ {sum}</th>
+                                                }
+                                                <th><Link to='/products' className='btn btn-sm btn-primary'><i className='fa fa-plus-circle'></i> Add more items</Link></th>
+                                            </tr>
+                                        }
+                                        {
+                                            discountValue &&
+                                            <tr>
+                                                <th>Total Items<span className='text-success'> ({cartData.length})</span></th>
+                                                <th>Total Price</th>
+                                                {
+                                                    (CurrencyData == 'inr' || CurrencyData == undefined) && <th>Rs. {total}</th>
+                                                }
+                                                {
+                                                    CurrencyData == 'usd' && <th>$ {total}</th>
+                                                }
+                                                <th><Link to='/products' className='btn btn-sm btn-primary'><i className='fa fa-plus-circle'></i> Add more items</Link></th>
+                                            </tr>
+                                        }
                                         <tr>
                                             <td colSpan='4' align='center'>
                                                 <Link to='/' className='btn btn-primary mt-2 border-solid'>Continue Shopping</Link>
