@@ -81,7 +81,7 @@ function Header(props) {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <Link className="navbar-brand" to='/'>Python</Link>
+            <Link className="navbar-brand" to='/'>e-Shopping</Link>
             {/* for options and search bar in Navbar */}
             <div>
               <form className="input-group">
@@ -120,9 +120,9 @@ function Header(props) {
               <li className="nav-item">
                 <Link className="nav-link text-light" to="/checkout">My Cart ({cartItems})</Link>
               </li>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <Link className="nav-link text-light" to="/checkout">New Order(5)</Link>
-              </li>
+              </li> */}
               {/* Seller/Vendor pannel */}
               {
                 vendor_username ?

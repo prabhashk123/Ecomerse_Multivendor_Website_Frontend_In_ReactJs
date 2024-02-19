@@ -88,7 +88,7 @@ function Checkout() {
             });
     };
     // caculate total price if coupon exists
-    const total = sum - discountValue
+    var total = sum - discountValue
     // for remove item from cart
     const cartRemoveButtonHandler = (product_id) => {
         var previousCart = localStorage.getItem('cartData');

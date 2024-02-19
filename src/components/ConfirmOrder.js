@@ -48,7 +48,7 @@ function ConfirmOrder() {
         // Submit Data
         axios.post(baseUrl + '/orders/', formData)
             .then(function (response) {
-                console.log(response.data);
+                // console.log(response.data);
                 var orderId = response.data.id;
                 setorderId(orderId);
                 if (CurrencyData == 'usd') {
