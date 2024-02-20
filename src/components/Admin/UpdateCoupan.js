@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 function UpdateCoupanlist() {
-    const configs=require('../../utils/Configs'); 
+    const configs=require('../Configs'); 
     const baseUrl=configs.URL;
     const { coupan_id } = useParams();
     const [ErrorMsg, setErrorMsg] = useState('');

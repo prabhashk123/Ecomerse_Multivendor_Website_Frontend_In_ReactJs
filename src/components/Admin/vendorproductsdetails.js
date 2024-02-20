@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 function Vendorproductdetails() {
-    const configs=require('../../utils/Configs'); 
+    const configs=require('../Configs'); 
     const baseUrl=configs.URL;
     const [productData, setProductData] = useState([]);
     const [productImgs, setProductImgs] = useState([]);

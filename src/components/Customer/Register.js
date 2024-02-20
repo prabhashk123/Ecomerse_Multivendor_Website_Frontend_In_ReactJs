@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useState } from 'react';
 
 function Register() {
-    const configs=require('../../utils/Configs'); 
+    const configs=require('../Configs'); 
     const baseUrl=configs.URL;
     const [errorMsg, seterrorMsg] = useState('');
     const [successMsg, setsuccessMsg] = useState('');

@@ -5,7 +5,7 @@ import AdminSidebar from './AdminSidebar';
 import { Dropdown } from 'react-bootstrap';
 
 function AllVendorProducts() {
-    const configs=require('../../utils/Configs'); 
+    const configs=require('../Configs'); 
     const baseUrl=configs.URL;
     const [ProductData, setProductData] = useState([]);
  

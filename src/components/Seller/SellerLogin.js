@@ -7,7 +7,7 @@ import BackgroundImage from "../assets/images/background.png";
 import Logo from "../assets/images/logo.png";
 
 function SellerLogin() {
-    const configs=require('../../utils/Configs'); 
+    const configs=require('../Configs'); 
     const baseUrl=configs.URL;
     const [show, setShow] = useState(false);
     const navigate = useNavigate();

@@ -6,7 +6,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 
 function AdminCategory() {
-    const configs=require('../../utils/Configs'); 
+    const configs=require('../Configs'); 
     const baseUrl=configs.URL;
     const [CategoryData, setCategoryData] = useState([]);
 

@@ -4,7 +4,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import { Link } from 'react-router-dom';
 
 function AdminSidebar() {
-    const configs=require('../../utils/Configs'); 
+    const configs=require('../Configs'); 
     const baseUrl=configs.URL;
     // for Notifications count
     const[notifiData,setnotifiData]=useState([])

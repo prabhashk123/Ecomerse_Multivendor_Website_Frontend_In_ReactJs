@@ -2,7 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 
 function Contactus() {
-    const configs=require('../../utils/Configs'); 
+    const configs=require('./Configs'); 
     const baseUrl=configs.URL;
     const [ErrorMsg, setErrorMsg] = useState('');
     const [SuccessMsg, setSuccessMsg] = useState('');

@@ -5,7 +5,7 @@ import { useState } from 'react';
 import axios from 'axios';
 
 function VendorChangePassword() {
-    const configs=require('../../utils/Configs'); 
+    const configs=require('../Configs'); 
     const baseUrl=configs.URL;
     const vendor_id = localStorage.getItem('vendor_id');
     const [passwordchanged, setpasswordchanged] = useState(false);

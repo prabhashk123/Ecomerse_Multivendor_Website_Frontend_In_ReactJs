@@ -9,7 +9,7 @@ import { useContext } from 'react';
 import { CartContext, CurrencyContext } from './Context';
 
 function Checkout() {
-    const configs=require('../../utils/Configs'); 
+    const configs=require('./Configs'); 
     const baseUrl=configs.URL;
     const [couponCode, setcouponCode] = useState([])
     const [discountValue, setdiscountValue] = useState('')

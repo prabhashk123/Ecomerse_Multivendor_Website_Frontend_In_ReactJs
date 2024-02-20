@@ -9,7 +9,7 @@ import { CurrencyContext, CartContext, UserContext } from './Context';
 
 // props means property
 function SingleRelatedProduct(props) {
-    const configs=require('../../utils/Configs'); 
+    const configs=require('./Configs'); 
     const baseUrl=configs.URL;
     const [ProductInWishlist, setProductInWishlist] = useState(false);
     const [cartButtonClickStatus, setcartButtonClickStatus] = useState([false]);

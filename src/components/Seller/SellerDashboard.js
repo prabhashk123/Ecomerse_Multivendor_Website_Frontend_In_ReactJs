@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useState,useEffect } from 'react';
 
 function SellerDashboard() {
-    const configs=require('../../utils/Configs'); 
+    const configs=require('../Configs'); 
     const baseUrl=configs.URL;
     var vendor_id = localStorage.getItem('vendor_id');
     const [VendorData, setVendorData] = useState({

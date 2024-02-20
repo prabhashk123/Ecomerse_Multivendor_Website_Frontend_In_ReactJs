@@ -8,7 +8,7 @@ import useRazorpay from "react-razorpay";
 import { CurrencyContext } from "./Context";
 
 function ConfirmOrder() {
-    const configs=require('../../utils/Configs'); 
+    const configs=require('./Configs'); 
     const baseUrl=configs.URL;
     const [ConfirmOrder, setConfirmOrder] = useState(false);
     const [orderId, setorderId] = useState('');

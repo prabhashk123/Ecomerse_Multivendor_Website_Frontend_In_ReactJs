@@ -3,7 +3,7 @@ import Sidebar from './Sidebar';
 import { useState, useEffect } from 'react';
 
 function Dashboard(props) {
-    const configs=require('../../utils/Configs'); 
+    const configs=require('../Configs'); 
     const baseUrl=configs.URL;
     var customer_id = localStorage.getItem('customer_id');
     const [CountList, setCountList] = useState({

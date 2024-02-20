@@ -14,7 +14,7 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 
 function ProductDetail() {
     // whole url pass in baseUrl
-    const configs=require('../../utils/Configs'); 
+    const configs=require('./Configs'); 
     const baseUrl=configs.URL;
     // product backend
     const [productData, setProductData] = useState([]);

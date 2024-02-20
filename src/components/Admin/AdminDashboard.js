@@ -4,7 +4,7 @@ import { useState,useEffect } from 'react';
 import axios from 'axios';
 
 function AdminDashboard() {
-    const configs=require('../../utils/Configs'); 
+    const configs=require('../Configs'); 
     const baseUrl=configs.URL;
     const[allProductData,setallProductData]=useState([])
     const[allCustomerData,setallCustomerData]=useState([])

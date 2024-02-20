@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Carousel } from 'react-bootstrap';
 
 function SquareImageSlider() {
-    const configs=require('../../utils/Configs'); 
+    const configs=require('../Configs'); 
     const baseUrl=configs.URL;
     const baseImgUrl = 'http://127.0.0.1:8000'
     const [catimg, setcatimg] = useState([]);

@@ -6,7 +6,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 
 function SellerProducts() {
-    const configs=require('../../utils/Configs'); 
+    const configs=require('../Configs'); 
     const baseUrl=configs.URL;
     const [ProductData, setProductData] = useState([]);
     const vendor_id = localStorage.getItem('vendor_id')

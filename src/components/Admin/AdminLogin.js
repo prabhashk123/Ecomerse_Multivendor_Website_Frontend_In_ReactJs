@@ -7,7 +7,7 @@ import Logo from "../assets/images/logo.png";
 import { useNavigate } from 'react-router-dom';
 
 function AdminLogin() {
-    const configs=require('../../utils/Configs'); 
+    const configs=require('../Configs'); 
     const baseUrl=configs.URL;
     const navigate = useNavigate();
     const [show, setShow] = useState(false);

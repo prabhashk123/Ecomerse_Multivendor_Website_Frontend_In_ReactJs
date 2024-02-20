@@ -7,7 +7,7 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
 function UpdateCategory() {
-    const configs=require('../../utils/Configs'); 
+    const configs=require('../Configs'); 
     const baseUrl=configs.URL;
     const { category_id } = useParams();
     const [ErrorMsg, setErrorMsg] = useState('');

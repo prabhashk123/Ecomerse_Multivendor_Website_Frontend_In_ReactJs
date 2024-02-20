@@ -8,7 +8,7 @@ import BackgroundImage from "../assets/images/background.png";
 import Logo from "../assets/images/logo.png";
 
 function Login(props) {
-    const configs=require('../../utils/Configs'); 
+    const configs=require('../Configs'); 
     const baseUrl=configs.URL;
     const navigate = useNavigate();
     const [show, setShow] = useState(false);

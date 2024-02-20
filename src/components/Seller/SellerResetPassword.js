@@ -6,7 +6,7 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
 function SellerResetPassword() {
-    const configs=require('../../utils/Configs'); 
+    const configs=require('../Configs'); 
     const baseUrl=configs.URL;
     const { vendor_id } = useParams();
     const [successMsg, setsuccessMsg] = useState('');

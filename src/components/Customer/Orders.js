@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import OrderRows from '../OrderRow';
 
 function Oders() {
-    const configs=require('../../utils/Configs'); 
+    const configs=require('../Configs'); 
     const baseUrl=configs.URL;
     const customer_id = localStorage.getItem('customer_id');
     const [OrderItems, setOrderItems] = useState([]);

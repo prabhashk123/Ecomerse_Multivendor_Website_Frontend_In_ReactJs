@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 function Customerforgotpassword() {
-    const configs=require('../../utils/Configs'); 
+    const configs=require('../Configs'); 
     const baseUrl=configs.URL;
     // const navigate = useNavigate();
     const [successMsg, setsuccessMsg] = useState('');

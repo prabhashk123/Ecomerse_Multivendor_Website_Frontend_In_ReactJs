@@ -8,7 +8,7 @@ import { useState, useEffect} from 'react';
 
 function SellerDetail() {
     // whole url pass in baseUrl
-    const configs=require('../../utils/Configs'); 
+    const configs=require('../Configs'); 
     const baseUrl=configs.URL;
     const {seller_username,seller_id } = useParams();
     // product backend

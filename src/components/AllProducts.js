@@ -24,7 +24,7 @@ function AllProducts() {
     // Dynamic data fetch
 
     // whole url pass in baseUrl
-    const configs=require('../../utils/Configs'); 
+    const configs=require('./Configs'); 
     const baseUrl=configs.URL;
     // product backend
     const [Products, setProducts] = useState([]);

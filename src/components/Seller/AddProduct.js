@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function AddProduct() {
-    const configs=require('../../utils/Configs'); 
+    const configs=require('../Configs'); 
     const baseUrl=configs.URL;
     const vendor_id = localStorage.getItem('vendor_id');
     const [CategoryData, setCategoryData] = useState([]);

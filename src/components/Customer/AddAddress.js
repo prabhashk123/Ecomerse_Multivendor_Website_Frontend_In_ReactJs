@@ -5,7 +5,7 @@ import { useState } from 'react';
 import axios from 'axios';
 
 function AddAddress() {
-    const configs=require('../../utils/Configs'); 
+    const configs=require('../Configs'); 
     const baseUrl=configs.URL;
     var customer_id = localStorage.getItem('customer_id');
     const [ErrorMsg, setErrorMsg] = useState('');
