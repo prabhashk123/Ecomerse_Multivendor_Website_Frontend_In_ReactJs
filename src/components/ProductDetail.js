@@ -14,7 +14,8 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 
 function ProductDetail() {
     // whole url pass in baseUrl
-    const baseUrl = 'http://127.0.0.1:8000/api';
+    const configs=require('../../utils/Configs'); 
+    const baseUrl=configs.URL;
     // product backend
     const [productData, setProductData] = useState([]);
     const [productImgs, setProductImgs] = useState([]);

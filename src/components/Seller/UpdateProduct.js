@@ -8,7 +8,8 @@ import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 
 function UpdateProduct() {
-    const baseUrl = 'http://127.0.0.1:8000/api';
+    const configs=require('../../utils/Configs'); 
+    const baseUrl=configs.URL;
     const { product_id } = useParams();
     const vendor_id = localStorage.getItem('vendor_id');
     const [CategoryData, setCategoryData] = useState([]);

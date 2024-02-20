@@ -24,7 +24,8 @@ function AllProducts() {
     // Dynamic data fetch
 
     // whole url pass in baseUrl
-    const baseUrl = 'http://127.0.0.1:8000/api';
+    const configs=require('../../utils/Configs'); 
+    const baseUrl=configs.URL;
     // product backend
     const [Products, setProducts] = useState([]);
     // Pagination

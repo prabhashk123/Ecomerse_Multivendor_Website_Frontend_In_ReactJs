@@ -9,7 +9,8 @@ import { useContext } from 'react';
 import { CartContext, CurrencyContext } from './Context';
 
 function Checkout() {
-    const baseUrl = 'http://127.0.0.1:8000/api';
+    const configs=require('../../utils/Configs'); 
+    const baseUrl=configs.URL;
     const [couponCode, setcouponCode] = useState([])
     const [discountValue, setdiscountValue] = useState('')
     const [ErrorMsg, setErrorMsg] = useState('');

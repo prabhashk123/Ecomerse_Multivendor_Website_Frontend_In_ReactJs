@@ -8,7 +8,8 @@ import { useState, useEffect} from 'react';
 
 function SellerDetail() {
     // whole url pass in baseUrl
-    const baseUrl = 'http://127.0.0.1:8000/api';
+    const configs=require('../../utils/Configs'); 
+    const baseUrl=configs.URL;
     const {seller_username,seller_id } = useParams();
     // product backend
     const [ProductList, setProductList] = useState([]);

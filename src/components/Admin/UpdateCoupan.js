@@ -7,7 +7,8 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 function UpdateCoupanlist() {
-    const baseUrl = 'http://127.0.0.1:8000/api';
+    const configs=require('../../utils/Configs'); 
+    const baseUrl=configs.URL;
     const { coupan_id } = useParams();
     const [ErrorMsg, setErrorMsg] = useState('');
     const [SuccessMsg, setSuccessMsg] = useState('');

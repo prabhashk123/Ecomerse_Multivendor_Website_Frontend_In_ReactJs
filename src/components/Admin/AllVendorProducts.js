@@ -5,7 +5,8 @@ import AdminSidebar from './AdminSidebar';
 import { Dropdown } from 'react-bootstrap';
 
 function AllVendorProducts() {
-    const baseUrl = 'http://127.0.0.1:8000/api';
+    const configs=require('../../utils/Configs'); 
+    const baseUrl=configs.URL;
     const [ProductData, setProductData] = useState([]);
  
     useEffect(() => {

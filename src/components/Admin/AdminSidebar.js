@@ -4,7 +4,8 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import { Link } from 'react-router-dom';
 
 function AdminSidebar() {
-    const baseUrl = 'http://127.0.0.1:8000/api';
+    const configs=require('../../utils/Configs'); 
+    const baseUrl=configs.URL;
     // for Notifications count
     const[notifiData,setnotifiData]=useState([])
     useEffect(()=>{

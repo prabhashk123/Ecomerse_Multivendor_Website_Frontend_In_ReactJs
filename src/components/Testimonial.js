@@ -5,7 +5,8 @@ import Carousel from 'react-bootstrap/Carousel';
 function Testimonial(props) {
     // const index = props.index;
     // const item = props.item;
-    const baseUrl = 'http://127.0.0.1:8000/api';
+    const configs=require('../../utils/Configs'); 
+    const baseUrl=configs.URL;
     // const baseImgUrl = 'http://127.0.0.1:8000';
     const [ReviewsList, setReviewsList] = useState([]);
     // const [Starlist, setStarlist] = useState(0);

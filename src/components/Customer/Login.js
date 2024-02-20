@@ -8,7 +8,8 @@ import BackgroundImage from "../assets/images/background.png";
 import Logo from "../assets/images/logo.png";
 
 function Login(props) {
-    const baseUrl = 'http://127.0.0.1:8000/api';
+    const configs=require('../../utils/Configs'); 
+    const baseUrl=configs.URL;
     const navigate = useNavigate();
     const [show, setShow] = useState(false);
     const [formError, setFormError] = useState(false);

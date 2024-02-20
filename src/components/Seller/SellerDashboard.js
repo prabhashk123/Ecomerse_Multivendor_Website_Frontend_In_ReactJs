@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { useState,useEffect } from 'react';
 
 function SellerDashboard() {
-    const baseUrl = 'http://127.0.0.1:8000/api';
+    const configs=require('../../utils/Configs'); 
+    const baseUrl=configs.URL;
     var vendor_id = localStorage.getItem('vendor_id');
     const [VendorData, setVendorData] = useState({
         'totalOrders': 0,

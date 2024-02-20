@@ -9,7 +9,8 @@ import { CurrencyContext, CartContext, UserContext } from './Context';
 
 // props means property
 function SingleProduct(props) {
-    const baseUrl = 'http://127.0.0.1:8000/api';
+    const configs=require('../../utils/Configs'); 
+    const baseUrl=configs.URL;
     const [ProductInWishlist, setProductInWishlist] = useState(false);
     const [cartButtonClickStatus, setcartButtonClickStatus] = useState([false]);
     const { cartData, setCartData } = useContext(CartContext);

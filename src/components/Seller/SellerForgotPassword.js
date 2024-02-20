@@ -4,7 +4,8 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 function SellerForgotPassword() {
-    const baseUrl = 'http://127.0.0.1:8000/api';
+    const configs=require('../../utils/Configs'); 
+    const baseUrl=configs.URL;
     const [successMsg, setsuccessMsg] = useState('');
     const [errorMsg, seterrorMsg] = useState('');
     const [SellerData, setSellerData] = useState({

@@ -6,7 +6,8 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
 function Resetpassword() {
-    const baseUrl = 'http://127.0.0.1:8000/api';
+    const configs=require('../../utils/Configs'); 
+    const baseUrl=configs.URL;
     const { customer_id } = useParams();
     const [successMsg, setsuccessMsg] = useState('');
     const [errorMsg, seterrorMsg] = useState('');

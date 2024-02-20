@@ -9,7 +9,8 @@ import SingleSeller from './Seller/SingleSeller';
 import SquareImageSlider from './Admin/SinglieCategorySlider';
 
 function Home(props) {
-    const baseUrl = 'http://127.0.0.1:8000/api';
+    const configs=require('../../utils/Configs'); 
+    const baseUrl=configs.URL;
     const baseImgUrl = 'http://127.0.0.1:8000';
     const [products, setProducts] = useState([]);
     // const [ReviewsList, setReviewsList] = useState([]);

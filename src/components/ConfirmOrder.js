@@ -8,7 +8,8 @@ import useRazorpay from "react-razorpay";
 import { CurrencyContext } from "./Context";
 
 function ConfirmOrder() {
-    const baseUrl = 'http://127.0.0.1:8000/api';
+    const configs=require('../../utils/Configs'); 
+    const baseUrl=configs.URL;
     const [ConfirmOrder, setConfirmOrder] = useState(false);
     const [orderId, setorderId] = useState('');
     const [orderAmount, setorderAmount] = useState('');

@@ -5,7 +5,8 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function AddCategory() {
-    const baseUrl = 'http://127.0.0.1:8000/api';
+    const configs=require('../../utils/Configs'); 
+    const baseUrl=configs.URL;
     const [ErrorMsg, setErrorMsg] = useState('');
     const [SuccessMsg, setSuccessMsg] = useState('');
     const [CategoryData, setCategoryData] = useState({

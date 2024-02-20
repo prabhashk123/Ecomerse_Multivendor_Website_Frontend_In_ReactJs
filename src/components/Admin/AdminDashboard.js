@@ -4,7 +4,8 @@ import { useState,useEffect } from 'react';
 import axios from 'axios';
 
 function AdminDashboard() {
-    const baseUrl = 'http://127.0.0.1:8000/api';
+    const configs=require('../../utils/Configs'); 
+    const baseUrl=configs.URL;
     const[allProductData,setallProductData]=useState([])
     const[allCustomerData,setallCustomerData]=useState([])
     const[allOrderData,setallOrderData]=useState([])

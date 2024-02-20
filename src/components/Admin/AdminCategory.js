@@ -6,7 +6,8 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 
 function AdminCategory() {
-    const baseUrl = 'http://127.0.0.1:8000/api';
+    const configs=require('../../utils/Configs'); 
+    const baseUrl=configs.URL;
     const [CategoryData, setCategoryData] = useState([]);
 
     useEffect(() => {

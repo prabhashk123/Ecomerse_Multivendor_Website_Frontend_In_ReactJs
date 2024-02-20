@@ -4,7 +4,8 @@ import axios from 'axios';
 import { useState } from 'react';
 
 function Register() {
-    const baseUrl = 'http://127.0.0.1:8000/api';
+    const configs=require('../../utils/Configs'); 
+    const baseUrl=configs.URL;
     const [errorMsg, seterrorMsg] = useState('');
     const [successMsg, setsuccessMsg] = useState('');
     const [registerFormData, setregisterFormData] = useState({

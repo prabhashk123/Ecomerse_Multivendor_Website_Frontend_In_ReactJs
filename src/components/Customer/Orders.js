@@ -4,7 +4,8 @@ import { useState, useEffect } from 'react';
 import OrderRows from '../OrderRow';
 
 function Oders() {
-    const baseUrl = 'http://127.0.0.1:8000/api';
+    const configs=require('../../utils/Configs'); 
+    const baseUrl=configs.URL;
     const customer_id = localStorage.getItem('customer_id');
     const [OrderItems, setOrderItems] = useState([]);
 
